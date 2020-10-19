@@ -1,8 +1,8 @@
 #screen1{
 	height: 100%;
     width: 100%;
-    margin: 0px;
-    background-image: url(Images/bg.jpg);
+    margin-top: 0px;
+    background-image: url(Images/bg2.jpg);
     background-size: 100% 100%;
 }
 
@@ -118,4 +118,20 @@
 	border: none;
 	text-indent: 100%;
 	background: url(Images/move-up.png) no-repeat right top;
+}
+
+#footer {
+	color: #E58910;
+	font-family: 'Teko';
+	font-size: 16px;
+  	letter-spacing: 3px;
+  	background: rgb(34, 24, 37, 0.9);
+	text-align: center;
+	line-height: 2px;
+}
+
+.copy-right {
+	text-align: center;
+	line-height: 2px;
+	margin-top: 30px;
 }
