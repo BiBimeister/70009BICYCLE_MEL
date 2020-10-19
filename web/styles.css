@@ -1,0 +1,121 @@
+#screen1{
+	height: 100%;
+    width: 100%;
+    margin: 0px;
+    background-image: url(Images/bg.jpg);
+    background-size: 100% 100%;
+}
+
+
+.mask{
+    z-index: 1;
+    position: relative;
+    width: 100%;
+    height: inherit;
+    overflow: hidden;
+    overflow-x: hidden;
+    background: rgb(46, 33, 49, 0.4);
+    padding-bottom: 30vh;
+}
+.navbar1 {
+   overflow: hidden;
+   background-color: #59871C;
+   top: 0;
+   width: 100%;
+   opacity: 0.95;
+   padding: 15px 5px 0px 15px;
+}
+
+#main-title {
+	color: #262728;
+  	text-align: center;
+  	font-family: 'Teko';
+  	font-size: 40px;
+  	letter-spacing: 8px;
+  	font-weight: 700;
+}
+
+#group-mem-names{
+	text-align: center;
+	color: #375511;
+	font-family: Questrial;
+}
+
+#menu-bar{
+	background-color: #221825;
+}
+
+.menu-items{
+	text-align: center;
+	color: #375511;
+	font-family: 'Questrial';
+	font-size: 20px;
+  	letter-spacing: 2px;
+  	text-transform: uppercase;
+}
+
+.menu-items:hover{
+	color: #E58910;
+
+}
+
+.title-design{
+	color: #E58910;
+	font-family: 'Teko';
+	font-size: 35px;
+  	letter-spacing: 3px;
+  	background: rgb(34, 24, 37, 0.9);
+  	padding: 5px 10px;
+  }
+
+.ana-text{
+	background: rgb(34, 24, 37, 0.9);
+	font-family: 'Questrial';
+	color: #918D8D;
+	padding: 10px 20px;
+	margin-left: 15px;
+}
+
+.ana-viz{
+	background: rgb(34, 24, 37, 0.9);
+	padding: 10px 20px;
+	margin-left: 15px;
+
+}
+
+#screen2{
+	padding: 50vh;
+    text-align: center;
+    background: #E58910;
+}
+
+#screen3{
+	padding-bottom: 90vh;
+    text-align: center;
+    background: #59871C;
+}
+
+#menu-bar a {
+	color: #918D8D;
+	text-decoration: none;
+} 
+
+#menu-bar a:hover {
+	color: #E58910;
+	font-weight: bold;
+	text-decoration: underline;
+} 
+
+#toTop {
+	display: none;
+	text-decoration: none;
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	overflow: hidden;
+	width: 32px;
+	height:32px;
+	border: none;
+	text-indent: 100%;
+	background: url(Images/move-up.png) no-repeat right top;
+}
