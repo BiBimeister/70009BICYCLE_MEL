@@ -14,12 +14,11 @@
     height: inherit;
     overflow: hidden;
     overflow-x: hidden;
-    background: rgb(46, 33, 49, 0.4);
-    padding-bottom: 30vh;
+    background: rgb(46, 33, 49, 0.2);
 }
 .navbar1 {
    overflow: hidden;
-   background-color: #59871C;
+   background-color: #95a792;
    top: 0;
    width: 100%;
    opacity: 0.95;
@@ -30,24 +29,26 @@
 	color: #262728;
   	text-align: center;
   	font-family: 'Teko';
-  	font-size: 40px;
+  	font-size: 55px;
   	letter-spacing: 8px;
   	font-weight: 700;
 }
 
 #group-mem-names{
 	text-align: center;
-	color: #375511;
+	color: #e3d9ca;
 	font-family: Questrial;
+	letter-spacing: 6px;
+	font-size: 16px;
 }
 
 #menu-bar{
-	background-color: #221825;
+	background-color: #d2d3c9;
 }
 
 .menu-items{
 	text-align: center;
-	color: #375511;
+	color: #fff;
 	font-family: 'Questrial';
 	font-size: 20px;
   	letter-spacing: 2px;
@@ -60,26 +61,28 @@
 }
 
 .title-design{
-	color: #E58910;
+	color: #375511;
 	font-family: 'Teko';
 	font-size: 35px;
   	letter-spacing: 3px;
-  	background: rgb(34, 24, 37, 0.9);
+  	background: #95a792;
   	padding: 5px 10px;
   }
 
 .ana-text{
-	background: rgb(34, 24, 37, 0.9);
+	background: #95a792;
 	font-family: 'Questrial';
-	color: #918D8D;
+	color: #403f48;
 	padding: 10px 20px;
 	margin-left: 15px;
+	letter-spacing: 0.5px;
 }
 
 .ana-viz{
-	background: rgb(34, 24, 37, 0.9);
+	background: #888888;
 	padding: 10px 20px;
 	margin-left: 15px;
+	 opacity:0.8;
 
 }
 
@@ -92,16 +95,16 @@
 #screen3{
 	padding-bottom: 90vh;
     text-align: center;
-    background: #59871C;
+    background: #e3d9ca;
 }
 
 #menu-bar a {
-	color: #918D8D;
+	color: #fff;
 	text-decoration: none;
 } 
 
 #menu-bar a:hover {
-	color: #E58910;
+	color: #fff;
 	font-weight: bold;
 	text-decoration: underline;
 } 
@@ -125,7 +128,7 @@
 	font-family: 'Teko';
 	font-size: 16px;
   	letter-spacing: 3px;
-  	background: rgb(34, 24, 37, 0.9);
+  	background: #403f48;
 	text-align: center;
 	line-height: 2px;
 }
@@ -134,4 +137,12 @@
 	text-align: center;
 	line-height: 2px;
 	margin-top: 30px;
+}
+
+.nav-container {
+	height:580px;
+}
+
+.weather-wdiget{
+	margin-right: 15px;
 }
