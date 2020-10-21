@@ -86,6 +86,15 @@
 
 }
 
+#screen1-5{
+	padding-top: 20px;
+	padding-bottom: 20px;
+    text-align: center;
+    background: #d2d3c9;
+
+}
+
+
 #screen2{
 	padding: 50vh;
     text-align: center;
@@ -99,13 +108,13 @@
 }
 
 #menu-bar a {
-	color: #fff;
+	color: #847b6d;
 	text-decoration: none;
+	font-weight: 200;
 } 
 
 #menu-bar a:hover {
 	color: #fff;
-	font-weight: bold;
 	text-decoration: underline;
 } 
 
@@ -146,3 +155,6 @@
 .weather-wdiget{
 	margin-right: 15px;
 }
+.images-slider{
+}
+
