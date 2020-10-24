@@ -21,6 +21,13 @@
 	<script type="text/javascript" src="js/easing.js"></script>
 	<script type="text/javascript" src="js/move-top.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script> <!--letter-->
+
+	<!-- Mapbox CSS -->
+	<link rel="stylesheet" href="mapbox.css">
+	<!-- Mapbox Js-->
+	<script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
+
 	
 	<link rel="stylesheet" href="fwslider.css" media="all">
 	<script src="js/jquery-ui.min.js"></script>
@@ -84,7 +91,7 @@
 	</div>
 </div>
 
-<!--2nd Screen MAP-->
+<!--1.5 Screen Slider-->
 <div id="screen1-5">		
 		<!----start-images-slider---->
 		<div class="col-sm-12" class="images-slider">
@@ -116,10 +123,9 @@
 
 <!--2nd Screen MAP-->
 <div id="screen2">
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-sm-12"> Mapbox Map </div>			
-		</div>		
+	<div class="mapbox-wrapper">
+		<div id="map"></div>	
+		<div id="map-menu"></div>
 	</div>
 </div>
 
@@ -209,6 +215,200 @@
 		easing: "easeOutExpo",
 		delay: 1000
 	  });
+	</script>
+
+<!-- mapbox -->
+	<script type="text/javascript">
+		mapboxgl.accessToken = 'pk.eyJ1IjoidGlhbnpoaXBlbmdmZWkiLCJhIjoiY2tleHNiZnFqMzJiMDJxbGdtb3cxdnZjNCJ9.y_c9Bp7uXK3tQvaCrp3kCw';
+		var map = new mapboxgl.Map({
+			container: 'map',
+			style: 'mapbox://styles/tianzhipengfei/ckgk5eji20ewm19qyz1pnp56s',
+			zoom: 10,
+			center: [144.959423, -37.807983]
+		});
+
+		var volumeData = {
+			"type": "geojson", "data": {"type": "FeatureCollection", "features": [{"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.96138, -37.81992], [144.960053, -37.825963], [144.970126, -37.823317], [144.967438, -37.817448], [144.963791, -37.809612]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.957006, -37.825213], [144.955046, -37.8211], [144.954158, -37.819073], [144.951431, -37.81321]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.935898, -37.80994], [144.944713, -37.815089], [144.947427, -37.821009], [144.952186, -37.824209]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.947479, -37.823795], [144.947632, -37.822382], [144.947427, -37.821009]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.973917, -37.818424], [144.977808, -37.823105], [144.97644, -37.823025]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.955046, -37.8211], [144.957546, -37.820346], [144.967438, -37.817448], [144.972394, -37.816005], [144.974854, -37.815277]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.947427, -37.821009], [144.954158, -37.819073], [144.973964, -37.813323]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.970248, -37.818619], [144.973917, -37.818424]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.972394, -37.816005], [144.968765, -37.808155]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.974854, -37.815277], [144.973964, -37.813323], [144.973053, -37.811378], [144.972971, -37.809248]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.944713, -37.815089], [144.951431, -37.81321], [144.953873, -37.812531], [144.956451, -37.811749], [144.958847, -37.811039], [144.961361, -37.810334], [144.963791, -37.809612], [144.966278, -37.808903], [144.968765, -37.808155]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.959, -37.787979], [144.957474, -37.799747], [144.963791, -37.809612]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.983541, -37.810411], [144.975632, -37.809547], [144.972971, -37.809248]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.963226, -37.804562]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.943954, -37.800289], [144.93885, -37.795421]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.951172, -37.796627], [144.957474, -37.799747]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.93885, -37.795421], [144.939982, -37.78757]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.93885, -37.795421], [144.935852, -37.795096], [144.930987, -37.79454], [144.927689, -37.794117]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.936034, -37.788788], [144.925278, -37.787695], [144.935852, -37.795096]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.941956, -37.793993]]}}]}
+		}
+
+		map.on('load', function() {
+
+			map.loadImage('http://tianzhipengfei.xin/static/park.png', (error, image) => {
+				if (error) throw error;
+				map.addImage('park_image', image);
+			});
+
+			map.loadImage('http://tianzhipengfei.xin/static/dock.png', (error, image) => {
+				if (error) throw error;
+				map.addImage('dock_image', image);
+			});
+
+			map.loadImage('http://tianzhipengfei.xin/static/shop.png', (error, image) => {
+				if (error) throw error;
+				map.addImage('shop_image', image);
+			});
+
+			// add source and layer for volume
+			map.addSource('volume', volumeData);
+			map.addLayer({
+				'id': 'volume',
+				'type': 'line',
+				'source': 'volume',
+				'layout': {
+						// make layer visible by default
+						'visibility': 'visible'
+					}
+				});
+
+				// add source and layer for bicycle stops
+			map.addSource('stops', {
+				type: 'vector',
+				url: 'mapbox://tianzhipengfei.437a9quc'
+			});
+
+			map.addLayer({
+				'id': 'stops',
+				'type': 'symbol',
+				'source': 'stops',
+				'source-layer': 'preprocessed_stop1-dqalw3',
+				'layout': {
+						// make layer visible by default
+						'visibility': 'visible',
+						'icon-image': 'park_image',
+						'icon-size': 0.15
+					}
+				});
+
+			// add source and layer for bicycle shops
+			map.addSource('shops', {
+				type: 'vector',
+				url: 'mapbox://tianzhipengfei.9158xwfd'
+			});
+			map.addLayer({
+				'id': 'shops',
+				'type': 'symbol',
+				'source': 'shops',
+				'source-layer': 'bike_shop_2019-89iw44',
+				'layout': {
+					// make layer visible by default
+					'visibility': 'visible',
+						'icon-image': 'shop_image',
+						'icon-size': 0.10
+				}
+			});
+
+			// add source and layer for bicycle shared docks
+			map.addSource('docks', {
+				type: 'vector',
+				url: 'mapbox://tianzhipengfei.3ccc2p6y'
+			});
+
+
+			map.addLayer({
+				'id': 'docks',
+				'type': 'symbol',
+				'source': 'docks',
+				'source-layer': 'Bike_Share_Dock_Locations-3loyal',
+				'layout': {
+					// make layer visible by default
+					'visibility': 'visible',
+						'icon-image': 'dock_image',
+						'icon-size': 0.15
+				}
+			});
+
+			// map.addSource('crashes',{
+			// 	type:'vector',
+			// 	url:'mapbox://tianzhipengfei.cvhxe4pc'
+			// })
+
+			// map.addLayer({
+			// 	'id':'day_crashes',
+			// 	'type':'circle',
+			// 	'source':'crashes',
+			// 	'source-layer':'Crashes_mingdong-21jy40',
+			// 	layout:{
+			// 		visibility:'visible'
+			// 	},
+			// 	'filter':[
+			// 		'all',
+			// 		['!=','Bicyclist',0],
+			// 		['==','Light Condition','Day'||'Dusk/Dawn']
+			// 	],
+			// 	"paint":{
+			// 		"circle-color":"#e33b3b",
+			// 		"circle-radius":3,
+			// 		"circle-opacity":0.8
+			// 	}
+			// })
+
+			// map.addLayer({
+			// 	'id':'night_crashes',
+			// 	'type':'circle',
+			// 	'source':'crashes',
+			// 	'source-layer':'Crashes_mingdong-21jy40',
+			// 	layout:{
+			// 		visibility:'visible'
+			// 	},
+			// 	'filter':[
+			// 		'all',
+			// 		['!=','Bicyclist',0],
+			// 		['!=','Light Condition','Day'||'Dusk/Dawn']
+			// 	],
+			// 	"paint":{
+			// 		"circle-color":"#0f77ff",
+			// 		"circle-radius":3,
+			// 		"circle-opacity":0.8
+			// 	}
+			// });
+
+			// enumerate ids of the layers
+			var toggleableLayerIds = ['stops', 'volume', 'shops', 'docks', 'day_crashes', 'night_crashes'];
+			var toggleableLayerIds = ['stops', 'volume', 'shops', 'docks'];
+
+			// set up the corresponding toggle button for each layer
+			for (var i = 0; i < toggleableLayerIds.length; i++) {
+				var id = toggleableLayerIds[i];
+
+				var link = document.createElement('a');
+				link.href = '#';
+				link.className = 'active';
+				link.textContent = id;
+
+				link.onclick = function(e) {
+					var clickedLayer = this.textContent;
+					e.preventDefault();
+					e.stopPropagation();
+
+					var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
+					
+
+					// toggle layer visibility by changing the layout object's visibility property
+					if (visibility === 'visible') {
+						map.setLayoutProperty(clickedLayer, 'visibility', 'none');
+						this.className = '';
+					} else {
+						this.className = 'active';
+						map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
+					}
+				}
+				var layers = document.getElementById('map-menu');
+				layers.appendChild(link);
+			}
+
+
+
+
+			// Add geolocate control to the map.
+			map.addControl(
+				new mapboxgl.GeolocateControl({
+					positionOptions: {
+						enableHighAccuracy: true
+					},
+					trackUserLocation: true
+				})
+			);
+		})
 	</script>
 </body>
 </html>
