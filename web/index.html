@@ -16,6 +16,7 @@
 	<!--Website CSS-->
 	<link rel="stylesheet" href="styles.css">
 	<link rel="stylesheet" href="letter.css">
+	<link rel="stylesheet" href="tooltip.css">
 	<!--Website Js-->
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/easing.js"></script>
@@ -99,15 +100,14 @@
 		    <div id="fwslider">
 		        <div class="slider_container">
 		            <div class="slide"> 
-					<span>add some content here</span>
-					<img src="Images/background_.jpg" alt=""/>
+					<img src="Images/slideimage0.jpg" alt=""/>
 		            </div>
 		            <!-- /Duplicate to create more slides -->
 		            <div class="slide">
-		            <img src="Images/background1_.jpg" alt=""/>
+		            <img src="Images/slideimage1.jpg" alt=""/>
 		            </div>
 		            <div class="slide">
-		            <img src="Images/background2_.jpg" alt=""/>		               
+		            <img src="Images/slideimage2.jpg" alt=""/>		               
 		            </div>
 		            <!--/slide -->
 		        </div>
@@ -124,6 +124,9 @@
 <!--2nd Screen MAP-->
 <div id="screen2">
 	<div class="mapbox-wrapper">
+	<div class="title-design">
+			<div class="col-sm-12"> MAP </div>			
+	</div>
 		<div id="map"></div>	
 		<div id="map-menu"></div>
 	</div>
@@ -217,14 +220,14 @@
 	  });
 	</script>
 
-<!-- mapbox -->
+<!-- mapbox part-->
 	<script type="text/javascript">
 		mapboxgl.accessToken = 'pk.eyJ1IjoidGlhbnpoaXBlbmdmZWkiLCJhIjoiY2tleHNiZnFqMzJiMDJxbGdtb3cxdnZjNCJ9.y_c9Bp7uXK3tQvaCrp3kCw';
 		var map = new mapboxgl.Map({
 			container: 'map',
-			style: 'mapbox://styles/tianzhipengfei/ckgk5eji20ewm19qyz1pnp56s',
-			zoom: 10,
-			center: [144.959423, -37.807983]
+			style: 'mapbox://styles/tianzhipengfei/ckgnja5mz050t19nyuqxao4gp',
+			zoom: 14,
+			center: [144.955184, -37.832555]
 		});
 
 		var volumeData = {
@@ -233,17 +236,17 @@
 
 		map.on('load', function() {
 
-			map.loadImage('http://tianzhipengfei.xin/static/park.png', (error, image) => {
+			map.loadImage('http://tianzhipengfei.xin/static/cycle.png', (error, image) => {
 				if (error) throw error;
 				map.addImage('park_image', image);
 			});
 
-			map.loadImage('http://tianzhipengfei.xin/static/dock.png', (error, image) => {
+			map.loadImage('http://tianzhipengfei.xin/static/placeholder.png', (error, image) => {
 				if (error) throw error;
 				map.addImage('dock_image', image);
 			});
 
-			map.loadImage('http://tianzhipengfei.xin/static/shop.png', (error, image) => {
+			map.loadImage('http://tianzhipengfei.xin/static/shopping.png', (error, image) => {
 				if (error) throw error;
 				map.addImage('shop_image', image);
 			});
@@ -275,7 +278,7 @@
 						// make layer visible by default
 						'visibility': 'visible',
 						'icon-image': 'park_image',
-						'icon-size': 0.15
+						'icon-size': 0.3
 					}
 				});
 
@@ -293,7 +296,7 @@
 					// make layer visible by default
 					'visibility': 'visible',
 						'icon-image': 'shop_image',
-						'icon-size': 0.10
+						'icon-size': 0.45
 				}
 			});
 
@@ -313,7 +316,7 @@
 					// make layer visible by default
 					'visibility': 'visible',
 						'icon-image': 'dock_image',
-						'icon-size': 0.15
+						'icon-size': 0.45
 				}
 			});
 
