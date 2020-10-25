@@ -28,7 +28,7 @@
 	<link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
 	<!-- Mapbox Js-->
 	<script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
-	<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.4.0/mapbox-gl-compare.js"></script>
+	<script src="mapbox-gl-compare.js"></script>
 	<!-- Mapbox Compare -->
 	<link
 		rel="stylesheet"
@@ -85,7 +85,7 @@
 	</div>
 	
 	<!--After Menu-->
-	<div class="nav-container">>
+	<div class="nav-container">
 	<div class="container-fluid">
 		<div class="row" style="margin-top: 25px">		
 			<div class="col-sm-1"></div>
@@ -141,8 +141,8 @@
 			<div class="col-sm-12"> MAP </div>			
 	</div>
 	<div id="comparison-container">
-		<div id="before" class="map"></div>
-		<div id="after" class="map"></div>
+		<div id="before-map" class="map"></div>
+		<div id="after-map" class="map"></div>
 	</div>
 	<div id="map-menu"></div>
 	<div id="map-feature"></div>
@@ -253,9 +253,7 @@
 			req.onload = function() {
 				var json = JSON.parse(req.response);
 				var data = json.routes[0];
-				console.log(data)
 				var route = data.geometry.coordinates;
-				console.log(route)
 				var geojson = {
 					type: 'Feature',
 					properties: {},
@@ -272,14 +270,14 @@
 		mapboxgl.accessToken = 'pk.eyJ1IjoidGlhbnpoaXBlbmdmZWkiLCJhIjoiY2tleHNiZnFqMzJiMDJxbGdtb3cxdnZjNCJ9.y_c9Bp7uXK3tQvaCrp3kCw';
 		
 		var beforeMap = new mapboxgl.Map({
-			container: 'before',
+			container: 'before-map',
 			style: 'mapbox://styles/tianzhipengfei/ckgnja5mz050t19nyuqxao4gp',
 			zoom: 14,
 			center: [144.955184, -37.832555]
 		});
 
 		var afterMap = new mapboxgl.Map({
-			container: 'after',
+			container: 'after-map',
 			style: 'mapbox://styles/tianzhipengfei/ckgp7nfvc2gz21aqp4xo928mt',
 			zoom: 14,
 			center: [144.955184, -37.832555]
@@ -453,13 +451,7 @@
 				const longitude = position.coords.longitude;
 				let curPoint = [longitude, latitude]
 				var featureType = document.getElementById('featureType').value;
-
-				// var route_visibility = map.getLayoutProperty('route', 'visibility');
-				// var target_visibility = false
-				// if(typeof(target_layer) != 'undefined'){
-				// 	target_visibility = map.getLayoutProperty('nearest-location', 'visibility');
-				// }
-
+				console.log(featureType)
 				if(featureType == -1){
 					beforeMap.getSource('nearest-location').setData({
 						type: 'FeatureCollection',
@@ -470,23 +462,10 @@
 						features: []
 					});
 					return 
-				}		
-				// 	// toggle layer visibility by changing the layout object's visibility property
-				// 	if (route_visibility === 'visible') {
-				// 		map.setLayoutProperty(map.getLayer('route'), 'visibility', 'none');
-				// 	} 
-				// 	if (target_visibility === 'visible') {
-				// 		map.setLayoutProperty(map.getLayer('nearest-location'), 'visibility', 'none');
-				// 	} 
-
-				// 	if (route_visibility === 'visible') {
-				// 	map.setLayoutProperty(clickedLayer, 'visibility', 'none');
-				// 		this.className = '';
-				// 	}
-				// 	return;
-				// }
+				}	
 				document.getElementById('featureType').value = -1
 
+				map.setSlider(10000)
 				var data = null
 				var origin_layer = null
 				// find nearest stops 
