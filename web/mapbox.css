@@ -3,17 +3,22 @@
     height: 100vh;
 }
 
-#map {
+#comparison-container{
     width: 94vw; 
     height: 90vh;
     top: 5vh;
     bottom: 5vh;
     left: 3vw;
     right: 3vw;
-    position: relative;
-	
-    letter-spacing: 2px;
-    text-transform: uppercase;
+}
+
+.map {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    /* letter-spacing: 2px;
+    text-transform: uppercase; */
 }
 
 #map-menu {

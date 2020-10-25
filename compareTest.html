@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Swipe between maps</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+<script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
+<link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
+
+</head>
+<body>
+<style>
+    body {
+        overflow: hidden;
+    }
+
+    body * {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    .map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+    }
+</style>
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.4.0/mapbox-gl-compare.js"></script>
+<link
+    rel="stylesheet"
+    href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.4.0/mapbox-gl-compare.css"
+    type="text/css"
+/>
+<div id="comparison-container">
+    <div id="before" class="map"></div>
+    <div id="after" class="map"></div>
+</div>
+  <script type="text/javascript">
+
+    function getRoute(start, end) {
+      // make a directions request using cycling profile
+      // an arbitrary start will always be the same
+      // only the end or destination will change
+      var url = 'https://api.mapbox.com/directions/v5/mapbox/cycling/' + start[0] + ',' + start[1] + ';' + end[0] + ',' + end[1] + '?steps=true&geometries=geojson&access_token=' + mapboxgl.accessToken;
+
+      // make an XHR request https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest
+      var req = new XMLHttpRequest();
+      req.open('GET', url, true);
+      req.onload = function() {
+        var json = JSON.parse(req.response);
+        var data = json.routes[0];
+        console.log(data)
+        var route = data.geometry.coordinates;
+        console.log(route)
+        var geojson = {
+          type: 'Feature',
+          properties: {},
+          geometry: {
+            type: 'LineString',
+            coordinates: route
+          }
+        };
+        beforeMap.getSource('route').setData(geojson);
+      };
+      req.send();
+    }
+  
+    mapboxgl.accessToken = 'pk.eyJ1IjoidGlhbnpoaXBlbmdmZWkiLCJhIjoiY2tleHNiZnFqMzJiMDJxbGdtb3cxdnZjNCJ9.y_c9Bp7uXK3tQvaCrp3kCw';
+    
+    var beforeMap = new mapboxgl.Map({
+      container: 'before',
+      style: 'mapbox://styles/tianzhipengfei/ckgnja5mz050t19nyuqxao4gp',
+      zoom: 14,
+      center: [144.955184, -37.832555]
+    });
+
+    var afterMap = new mapboxgl.Map({
+      container: 'after',
+      style: 'mapbox://styles/tianzhipengfei/ckgp7nfvc2gz21aqp4xo928mt',
+      zoom: 14,
+      center: [144.955184, -37.832555]
+    });
+
+    var container = '#comparison-container';
+
+    var map = new mapboxgl.Compare(beforeMap, afterMap, container, {
+      // Set this to enable comparing two maps by mouse movement:
+      // mousemove: true
+    });
+
+    beforeMap.on('load', function() {
+
+      beforeMap.loadImage('http://tianzhipengfei.xin/static/cycle.png', (error, image) => {
+        if (error) throw error;
+        beforeMap.addImage('dock_image', image);
+      });
+
+      beforeMap.loadImage('http://tianzhipengfei.xin/static/placeholder.png', (error, image) => {
+        if (error) throw error;
+        beforeMap.addImage('park_image', image);
+      });
+
+      beforeMap.loadImage('http://tianzhipengfei.xin/static/shopping.png', (error, image) => {
+        if (error) throw error;
+        beforeMap.addImage('shop_image', image);
+      });
+
+      beforeMap.addSource('nearest-location', {
+        type: 'geojson',
+        data: {
+        type: 'FeatureCollection',
+        features: []
+        }
+      });
+
+      beforeMap.addSource('route', {
+        type: 'geojson',
+        data: {
+          type: 'Feature',
+          properties: {},
+          geometry: {
+          type: 'LineString',
+          coordinates: []
+          }
+        }
+      });
+      beforeMap.addLayer({
+        id: 'route',
+        type: 'line',
+        source: 'route',
+        layout: {
+          'line-join': 'round',
+          'line-cap': 'round',
+          'visibility': 'visible'
+        },
+        paint: {
+          'line-color': '#3887be',
+          'line-width': 5,
+          'line-opacity': 0.75
+        }
+      });
+
+      // add source and layer for bicycle stops
+      beforeMap.addSource('stops', stopData);
+      beforeMap.addLayer({
+        'id': 'stops',
+        'type': 'symbol',
+        'source': 'stops',
+        'layout': {
+            // make layer visible by default
+            'visibility': 'visible',
+            'icon-image': 'park_image',
+            'icon-size': 0.3
+          }
+        });
+
+      // add source and layer for bicycle shops
+      beforeMap.addSource('shops', shopData);
+      beforeMap.addLayer({
+        'id': 'shops',
+        'type': 'symbol',
+        'source': 'shops',
+        'layout': {
+          // make layer visible by default
+          'visibility': 'visible',
+            'icon-image': 'shop_image',
+            'icon-size': 0.45
+        }
+      });
+
+      // add source and layer for bicycle shared docks
+      beforeMap.addSource('docks', dockData);
+      beforeMap.addLayer({
+        'id': 'docks',
+        'type': 'symbol',
+        'source': 'docks',
+        'layout': {
+          // make layer visible by default
+          'visibility': 'visible',
+            'icon-image': 'dock_image',
+            'icon-size': 0.45
+        }
+      });
+
+      // map.addSource('crashes',{
+      //  type:'vector',
+      //  url:'mapbox://tianzhipengfei.cvhxe4pc'
+      // })
+
+      // map.addLayer({
+      //  'id':'day_crashes',
+      //  'type':'circle',
+      //  'source':'crashes',
+      //  'source-layer':'Crashes_mingdong-21jy40',
+      //  layout:{
+      //    visibility:'visible'
+      //  },
+      //  'filter':[
+      //    'all',
+      //    ['!=','Bicyclist',0],
+      //    ['==','Light Condition','Day'||'Dusk/Dawn']
+      //  ],
+      //  "paint":{
+      //    "circle-color":"#e33b3b",
+      //    "circle-radius":3,
+      //    "circle-opacity":0.8
+      //  }
+      // })
+
+      // map.addLayer({
+      //  'id':'night_crashes',
+      //  'type':'circle',
+      //  'source':'crashes',
+      //  'source-layer':'Crashes_mingdong-21jy40',
+      //  layout:{
+      //    visibility:'visible'
+      //  },
+      //  'filter':[
+      //    'all',
+      //    ['!=','Bicyclist',0],
+      //    ['!=','Light Condition','Day'||'Dusk/Dawn']
+      //  ],
+      //  "paint":{
+      //    "circle-color":"#0f77ff",
+      //    "circle-radius":3,
+      //    "circle-opacity":0.8
+      //  }
+      // });
+
+      // enumerate ids of the layers
+      // var toggleableLayerIds = ['stops', 'volume', 'shops', 'docks', 'day_crashes', 'night_crashes'];
+      var toggleableLayerIds = ['stops', 'shops', 'docks'];
+      var featuresLayerIds = ['FIND STOPS', 'FIND SHOPS', 'FIND DOCKS']
+
+
+      // Add geolocate control to the map.
+      var geolocate = new mapboxgl.GeolocateControl({
+        positionOptions: {
+          enableHighAccuracy: true
+        },
+        trackUserLocation: false
+      });
+      // Add the control to the map.
+      beforeMap.addControl(geolocate);
+      // Set an event listener that fires
+      // when a geolocate event occurs.
+      geolocate.on('geolocate', function(position) {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+        let curPoint = [longitude, latitude]
+        var featureType = document.getElementById('featureType').value;
+
+        // var route_visibility = map.getLayoutProperty('route', 'visibility');
+        // var target_visibility = false
+        // if(typeof(target_layer) != 'undefined'){
+        //  target_visibility = map.getLayoutProperty('nearest-location', 'visibility');
+        // }
+
+        if(featureType == -1){
+          beforeMap.getSource('nearest-location').setData({
+            type: 'FeatureCollection',
+            features: []
+          });
+          beforeMap.getSource('route').setData({
+            type: 'FeatureCollection',
+            features: []
+          });
+          return 
+        }   
+        //  // toggle layer visibility by changing the layout object's visibility property
+        //  if (route_visibility === 'visible') {
+        //    map.setLayoutProperty(map.getLayer('route'), 'visibility', 'none');
+        //  } 
+        //  if (target_visibility === 'visible') {
+        //    map.setLayoutProperty(map.getLayer('nearest-location'), 'visibility', 'none');
+        //  } 
+
+        //  if (route_visibility === 'visible') {
+        //  map.setLayoutProperty(clickedLayer, 'visibility', 'none');
+        //    this.className = '';
+        //  }
+        //  return;
+        // }
+        document.getElementById('featureType').value = -1
+
+        var data = null
+        var origin_layer = null
+        // find nearest stops 
+        if(featureType == "FIND STOPS"){
+          data = beforeMap.getSource("stops").serialize();
+          origin_layer = "stops"
+        }
+        // find nearest stops 
+        else if(featureType == "FIND SHOPS"){
+          data = beforeMap.getSource("shops").serialize();
+          origin_layer = "shops"
+        }
+        // find nearest stops 
+        else if(featureType == "FIND DOCKS"){
+          data = beforeMap.getSource("docks").serialize();
+          origin_layer = "docks"
+        }
+        var point = {
+          "type": "Feature",
+          "properties": {
+            "marker-color": "#0f0"
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": curPoint
+          }
+        };
+        var candidates = data.data
+        var nearestLocation = turf.nearest(point, candidates);
+        if (nearestLocation !== null) {
+          // Update the 'nearest-location' data source to include
+          // the nearest location
+
+          var mapLayer = beforeMap.getLayer('nearest-location');
+          if(typeof(mapLayer) !== 'undefined') {
+          // Remove map layer 
+            beforeMap.removeLayer('nearest-location')
+          }
+
+          beforeMap.getSource('nearest-location').setData({
+            type: 'FeatureCollection',
+            features: [
+              nearestLocation
+            ]
+          });
+
+          // Create a new circle layer from the 'nearest-library' data source
+          beforeMap.addLayer({
+            id: 'nearest-location',
+            type: 'circle',
+            source: 'nearest-location',
+            paint: {
+              'circle-radius': 20,
+              'circle-color': '#486DE0'
+            }
+          }, origin_layer);
+          let targetPoint = nearestLocation.geometry.coordinates
+          getRoute(curPoint, targetPoint);
+        }
+      });
+
+      // set up the corresponding toggle button for each layer
+      for (var i = 0; i < toggleableLayerIds.length; i++) {
+        var id = toggleableLayerIds[i];
+
+        var link = document.createElement('a');
+        link.href = '#';
+        link.className = 'active';
+        link.textContent = id;
+
+        link.onclick = function(e) {
+          var clickedLayer = this.textContent;
+          e.preventDefault();
+          e.stopPropagation();
+
+          var visibility = beforeMap.getLayoutProperty(clickedLayer, 'visibility');
+          
+
+          // toggle layer visibility by changing the layout object's visibility property
+          if (visibility === 'visible') {
+            beforeMap.setLayoutProperty(clickedLayer, 'visibility', 'none');
+            this.className = '';
+          } else {
+            this.className = 'active';
+            beforeMap.setLayoutProperty(clickedLayer, 'visibility', 'visible');
+          }
+        }
+        var layers = document.getElementById('map-menu');
+        layers.appendChild(link);
+      }
+
+      for (var i = 0; i < featuresLayerIds.length; i++) {
+        var id = featuresLayerIds[i];
+      
+        var link = document.createElement('a');
+        link.className = 'active';
+        link.textContent = id;
+
+        link.onclick = function(e) {
+          var targetType = document.getElementById('featureType').value = e.srcElement.outerText
+          if (targetType != -1){
+            geolocate.trigger()
+            return 
+          }
+        }
+        var layers = document.getElementById('map-feature');
+        layers.appendChild(link);
+      }
+    })
+  </script>
+
+</body>
+</html>
