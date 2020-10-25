@@ -438,15 +438,15 @@
 					var data = null
 					// find nearest stops 
 					if(targetType == "FIND STOPS"){
-						data = map.querySourceFeatures("stops");
+						data = map.getSource("stops").serialize();
 					}
 					// find nearest stops 
 					else if(targetType == "FIND SHOPS"){
-						data = map.querySourceFeatures("shops");
+						data = map.getSource("shops").serialize();
 					}
 					// find nearest stops 
 					else if(targetType == "FIND DOCKS"){
-						data = map.querySourceFeatures("docks");
+						data = map.getSource("docks").serialize();
 					}
 
 					console.log(data)
