@@ -126,6 +126,8 @@
 	<div class="mapbox-wrapper">
 		<div id="map"></div>	
 		<div id="map-menu"></div>
+		<div id="map-feature"></div>
+		<div id="featureType" style="visibility: hidden;"> -1 </div>
 	</div>
 </div>
 
@@ -233,6 +235,8 @@
 
 		map.on('load', function() {
 
+			console.log("in map load")
+
 			map.loadImage('http://tianzhipengfei.xin/static/park.png', (error, image) => {
 				if (error) throw error;
 				map.addImage('park_image', image);
@@ -249,23 +253,22 @@
 			});
 
 			// add source and layer for volume
-			map.addSource('volume', volumeData);
-			map.addLayer({
-				'id': 'volume',
-				'type': 'line',
-				'source': 'volume',
-				'layout': {
-						// make layer visible by default
-						'visibility': 'visible'
-					}
-				});
+			// map.addSource('volume', volumeData);
+			// map.addLayer({
+			// 	'id': 'volume',
+			// 	'type': 'line',
+			// 	'source': 'volume',
+			// 	'layout': {
+			// 			// make layer visible by default
+			// 			'visibility': 'visible'
+			// 		}
+			// 	});
 
 				// add source and layer for bicycle stops
 			map.addSource('stops', {
 				type: 'vector',
 				url: 'mapbox://tianzhipengfei.437a9quc'
 			});
-
 			map.addLayer({
 				'id': 'stops',
 				'type': 'symbol',
@@ -363,8 +366,29 @@
 			// });
 
 			// enumerate ids of the layers
-			var toggleableLayerIds = ['stops', 'volume', 'shops', 'docks', 'day_crashes', 'night_crashes'];
-			var toggleableLayerIds = ['stops', 'volume', 'shops', 'docks'];
+			// var toggleableLayerIds = ['stops', 'volume', 'shops', 'docks', 'day_crashes', 'night_crashes'];
+			var toggleableLayerIds = ['stops', 'shops', 'docks'];
+			var featuresLayerIds = ['FIND STOPS', 'FIND SHOPS', 'FIND DOCKS']
+
+
+			// Add geolocate control to the map.
+			var geolocate = new mapboxgl.GeolocateControl({
+				positionOptions: {
+					enableHighAccuracy: true
+				},
+				trackUserLocation: false
+			});
+			// Add the control to the map.
+			map.addControl(geolocate);
+			// Set an event listener that fires
+			// when a geolocate event occurs.
+			geolocate.on('geolocate', function(position) {
+				const latitude = position.coords.latitude;
+				const longitude = position.coords.longitude;
+				var featureType = document.getElementById('featureType').value;
+				console.log(featureType)	
+				document.getElementById('featureType').value = -1
+			});
 
 			// set up the corresponding toggle button for each layer
 			for (var i = 0; i < toggleableLayerIds.length; i++) {
@@ -396,18 +420,39 @@
 				layers.appendChild(link);
 			}
 
+			for (var i = 0; i < featuresLayerIds.length; i++) {
+				var id = featuresLayerIds[i];
+			
+				var link = document.createElement('a');
+				link.className = 'active';
+				link.textContent = id;
 
+				link.onclick = function(e) {
+					console.log(e.srcElement.outerText)
+					var targetType = document.getElementById('featureType').value = e.srcElement.outerText
+					if (targetType == -1){
+						geolocate.trigger()
+						return 
+					}
+					var data = null
+					// find nearest stops 
+					if(targetType == "FIND STOPS"){
+						data = map.querySourceFeatures("stops");
+					}
+					// find nearest stops 
+					else if(targetType == "FIND SHOPS"){
+						data = map.querySourceFeatures("shops");
+					}
+					// find nearest stops 
+					else if(targetType == "FIND DOCKS"){
+						data = map.querySourceFeatures("docks");
+					}
 
-
-			// Add geolocate control to the map.
-			map.addControl(
-				new mapboxgl.GeolocateControl({
-					positionOptions: {
-						enableHighAccuracy: true
-					},
-					trackUserLocation: true
-				})
-			);
+					console.log(data)
+				}
+				var layers = document.getElementById('map-feature');
+				layers.appendChild(link);
+			}
 		})
 	</script>
 </body>
