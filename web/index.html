@@ -25,9 +25,22 @@
 
 	<!-- Mapbox CSS -->
 	<link rel="stylesheet" href="mapbox.css">
+	<link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
 	<!-- Mapbox Js-->
 	<script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
-    <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
+	<script src="mapbox-gl-compare.js"></script>
+	<!-- Mapbox Compare -->
+	<link
+		rel="stylesheet"
+		href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.4.0/mapbox-gl-compare.css"
+		type="text/css"
+	/>
+
+	<!-- Turf Js -->
+	<script src='https://api.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js'></script>
+
+	<!-- Data Js -->
+	<script language=javascript src='./data.js'></script>
 
 	
 	<link rel="stylesheet" href="fwslider.css" media="all">
@@ -72,7 +85,7 @@
 	</div>
 	
 	<!--After Menu-->
-	<div class="nav-container">>
+	<div class="nav-container">
 	<div class="container-fluid">
 		<div class="row" style="margin-top: 25px">		
 			<div class="col-sm-1"></div>
@@ -127,8 +140,13 @@
 	<div class="title-design">
 			<div class="col-sm-12"> MAP </div>			
 	</div>
-		<div id="map"></div>	
-		<div id="map-menu"></div>
+	<div id="comparison-container">
+		<div id="before-map" class="map"></div>
+		<div id="after-map" class="map"></div>
+	</div>
+	<div id="map-menu"></div>
+	<div id="map-feature"></div>
+	<div id="featureType" style="visibility: hidden;"> -1 </div>
 	</div>
 </div>
 
@@ -222,58 +240,114 @@
 
 <!-- mapbox part-->
 	<script type="text/javascript">
+
+		function getRoute(start, end) {
+			// make a directions request using cycling profile
+			// an arbitrary start will always be the same
+			// only the end or destination will change
+			var url = 'https://api.mapbox.com/directions/v5/mapbox/cycling/' + start[0] + ',' + start[1] + ';' + end[0] + ',' + end[1] + '?steps=true&geometries=geojson&access_token=' + mapboxgl.accessToken;
+
+			// make an XHR request https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest
+			var req = new XMLHttpRequest();
+			req.open('GET', url, true);
+			req.onload = function() {
+				var json = JSON.parse(req.response);
+				var data = json.routes[0];
+				var route = data.geometry.coordinates;
+				var geojson = {
+					type: 'Feature',
+					properties: {},
+					geometry: {
+						type: 'LineString',
+						coordinates: route
+					}
+				};
+				beforeMap.getSource('route').setData(geojson);
+			};
+			req.send();
+		}
+	
 		mapboxgl.accessToken = 'pk.eyJ1IjoidGlhbnpoaXBlbmdmZWkiLCJhIjoiY2tleHNiZnFqMzJiMDJxbGdtb3cxdnZjNCJ9.y_c9Bp7uXK3tQvaCrp3kCw';
-		var map = new mapboxgl.Map({
-			container: 'map',
+		
+		var beforeMap = new mapboxgl.Map({
+			container: 'before-map',
 			style: 'mapbox://styles/tianzhipengfei/ckgnja5mz050t19nyuqxao4gp',
 			zoom: 14,
 			center: [144.955184, -37.832555]
 		});
 
-		var volumeData = {
-			"type": "geojson", "data": {"type": "FeatureCollection", "features": [{"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.96138, -37.81992], [144.960053, -37.825963], [144.970126, -37.823317], [144.967438, -37.817448], [144.963791, -37.809612]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.957006, -37.825213], [144.955046, -37.8211], [144.954158, -37.819073], [144.951431, -37.81321]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.935898, -37.80994], [144.944713, -37.815089], [144.947427, -37.821009], [144.952186, -37.824209]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.947479, -37.823795], [144.947632, -37.822382], [144.947427, -37.821009]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.973917, -37.818424], [144.977808, -37.823105], [144.97644, -37.823025]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.955046, -37.8211], [144.957546, -37.820346], [144.967438, -37.817448], [144.972394, -37.816005], [144.974854, -37.815277]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.947427, -37.821009], [144.954158, -37.819073], [144.973964, -37.813323]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.970248, -37.818619], [144.973917, -37.818424]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.972394, -37.816005], [144.968765, -37.808155]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.974854, -37.815277], [144.973964, -37.813323], [144.973053, -37.811378], [144.972971, -37.809248]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.944713, -37.815089], [144.951431, -37.81321], [144.953873, -37.812531], [144.956451, -37.811749], [144.958847, -37.811039], [144.961361, -37.810334], [144.963791, -37.809612], [144.966278, -37.808903], [144.968765, -37.808155]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.959, -37.787979], [144.957474, -37.799747], [144.963791, -37.809612]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.983541, -37.810411], [144.975632, -37.809547], [144.972971, -37.809248]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.963226, -37.804562]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.943954, -37.800289], [144.93885, -37.795421]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.951172, -37.796627], [144.957474, -37.799747]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.93885, -37.795421], [144.939982, -37.78757]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.93885, -37.795421], [144.935852, -37.795096], [144.930987, -37.79454], [144.927689, -37.794117]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.936034, -37.788788], [144.925278, -37.787695], [144.935852, -37.795096]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.941956, -37.793993]]}}]}
-		}
+		var afterMap = new mapboxgl.Map({
+			container: 'after-map',
+			style: 'mapbox://styles/tianzhipengfei/ckgp7nfvc2gz21aqp4xo928mt',
+			zoom: 14,
+			center: [144.955184, -37.832555]
+		});
 
-		map.on('load', function() {
+		var container = '#comparison-container';
 
-			map.loadImage('http://tianzhipengfei.xin/static/cycle.png', (error, image) => {
+		var map = new mapboxgl.Compare(beforeMap, afterMap, container, {
+			// Set this to enable comparing two maps by mouse movement:
+			// mousemove: true
+		});
+
+		beforeMap.on('load', function() {
+
+			beforeMap.loadImage('http://tianzhipengfei.xin/static/cycle.png', (error, image) => {
 				if (error) throw error;
-				map.addImage('park_image', image);
+				beforeMap.addImage('dock_image', image);
 			});
 
-			map.loadImage('http://tianzhipengfei.xin/static/placeholder.png', (error, image) => {
+			beforeMap.loadImage('http://tianzhipengfei.xin/static/placeholder.png', (error, image) => {
 				if (error) throw error;
-				map.addImage('dock_image', image);
+				beforeMap.addImage('park_image', image);
 			});
 
-			map.loadImage('http://tianzhipengfei.xin/static/shopping.png', (error, image) => {
+			beforeMap.loadImage('http://tianzhipengfei.xin/static/shopping.png', (error, image) => {
 				if (error) throw error;
-				map.addImage('shop_image', image);
+				beforeMap.addImage('shop_image', image);
 			});
 
-			// add source and layer for volume
-			map.addSource('volume', volumeData);
-			map.addLayer({
-				'id': 'volume',
-				'type': 'line',
-				'source': 'volume',
-				'layout': {
-						// make layer visible by default
-						'visibility': 'visible'
+			beforeMap.addSource('nearest-location', {
+				type: 'geojson',
+				data: {
+				type: 'FeatureCollection',
+				features: []
+				}
+			});
+
+			beforeMap.addSource('route', {
+				type: 'geojson',
+				data: {
+					type: 'Feature',
+					properties: {},
+					geometry: {
+					type: 'LineString',
+					coordinates: []
 					}
-				});
-
-				// add source and layer for bicycle stops
-			map.addSource('stops', {
-				type: 'vector',
-				url: 'mapbox://tianzhipengfei.437a9quc'
+				}
+			});
+			beforeMap.addLayer({
+				id: 'route',
+				type: 'line',
+				source: 'route',
+				layout: {
+					'line-join': 'round',
+					'line-cap': 'round',
+					'visibility': 'visible'
+				},
+				paint: {
+					'line-color': '#3887be',
+					'line-width': 5,
+					'line-opacity': 0.75
+				}
 			});
 
-			map.addLayer({
+			// add source and layer for bicycle stops
+			beforeMap.addSource('stops', stopData);
+			beforeMap.addLayer({
 				'id': 'stops',
 				'type': 'symbol',
 				'source': 'stops',
-				'source-layer': 'preprocessed_stop1-dqalw3',
 				'layout': {
 						// make layer visible by default
 						'visibility': 'visible',
@@ -283,15 +357,11 @@
 				});
 
 			// add source and layer for bicycle shops
-			map.addSource('shops', {
-				type: 'vector',
-				url: 'mapbox://tianzhipengfei.9158xwfd'
-			});
-			map.addLayer({
+			beforeMap.addSource('shops', shopData);
+			beforeMap.addLayer({
 				'id': 'shops',
 				'type': 'symbol',
 				'source': 'shops',
-				'source-layer': 'bike_shop_2019-89iw44',
 				'layout': {
 					// make layer visible by default
 					'visibility': 'visible',
@@ -301,17 +371,11 @@
 			});
 
 			// add source and layer for bicycle shared docks
-			map.addSource('docks', {
-				type: 'vector',
-				url: 'mapbox://tianzhipengfei.3ccc2p6y'
-			});
-
-
-			map.addLayer({
+			beforeMap.addSource('docks', dockData);
+			beforeMap.addLayer({
 				'id': 'docks',
 				'type': 'symbol',
 				'source': 'docks',
-				'source-layer': 'Bike_Share_Dock_Locations-3loyal',
 				'layout': {
 					// make layer visible by default
 					'visibility': 'visible',
@@ -366,8 +430,102 @@
 			// });
 
 			// enumerate ids of the layers
-			var toggleableLayerIds = ['stops', 'volume', 'shops', 'docks', 'day_crashes', 'night_crashes'];
-			var toggleableLayerIds = ['stops', 'volume', 'shops', 'docks'];
+			// var toggleableLayerIds = ['stops', 'volume', 'shops', 'docks', 'day_crashes', 'night_crashes'];
+			var toggleableLayerIds = ['stops', 'shops', 'docks'];
+			var featuresLayerIds = ['FIND STOPS', 'FIND SHOPS', 'FIND DOCKS']
+
+
+			// Add geolocate control to the map.
+			var geolocate = new mapboxgl.GeolocateControl({
+				positionOptions: {
+					enableHighAccuracy: true
+				},
+				trackUserLocation: false
+			});
+			// Add the control to the map.
+			beforeMap.addControl(geolocate);
+			// Set an event listener that fires
+			// when a geolocate event occurs.
+			geolocate.on('geolocate', function(position) {
+				const latitude = position.coords.latitude;
+				const longitude = position.coords.longitude;
+				let curPoint = [longitude, latitude]
+				var featureType = document.getElementById('featureType').value;
+				console.log(featureType)
+				if(featureType == -1){
+					beforeMap.getSource('nearest-location').setData({
+						type: 'FeatureCollection',
+						features: []
+					});
+					beforeMap.getSource('route').setData({
+						type: 'FeatureCollection',
+						features: []
+					});
+					return 
+				}	
+				document.getElementById('featureType').value = -1
+
+				map.setSlider(10000)
+				var data = null
+				var origin_layer = null
+				// find nearest stops 
+				if(featureType == "FIND STOPS"){
+					data = beforeMap.getSource("stops").serialize();
+					origin_layer = "stops"
+				}
+				// find nearest stops 
+				else if(featureType == "FIND SHOPS"){
+					data = beforeMap.getSource("shops").serialize();
+					origin_layer = "shops"
+				}
+				// find nearest stops 
+				else if(featureType == "FIND DOCKS"){
+					data = beforeMap.getSource("docks").serialize();
+					origin_layer = "docks"
+				}
+				var point = {
+					"type": "Feature",
+					"properties": {
+						"marker-color": "#0f0"
+					},
+					"geometry": {
+						"type": "Point",
+						"coordinates": curPoint
+					}
+				};
+				var candidates = data.data
+				var nearestLocation = turf.nearest(point, candidates);
+				if (nearestLocation !== null) {
+					// Update the 'nearest-location' data source to include
+					// the nearest location
+
+					var mapLayer = beforeMap.getLayer('nearest-location');
+					if(typeof(mapLayer) !== 'undefined') {
+					// Remove map layer 
+						beforeMap.removeLayer('nearest-location')
+					}
+
+					beforeMap.getSource('nearest-location').setData({
+						type: 'FeatureCollection',
+						features: [
+							nearestLocation
+						]
+					});
+
+					// Create a new circle layer from the 'nearest-library' data source
+					beforeMap.addLayer({
+						id: 'nearest-location',
+						type: 'circle',
+						source: 'nearest-location',
+						paint: {
+							'circle-radius': 20,
+							'circle-color': '#486DE0'
+						}
+					}, origin_layer);
+					let targetPoint = nearestLocation.geometry.coordinates
+					getRoute(curPoint, targetPoint);
+				}
+			});
 
 			// set up the corresponding toggle button for each layer
 			for (var i = 0; i < toggleableLayerIds.length; i++) {
@@ -383,34 +541,39 @@
 					e.preventDefault();
 					e.stopPropagation();
 
-					var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
+					var visibility = beforeMap.getLayoutProperty(clickedLayer, 'visibility');
 					
 
 					// toggle layer visibility by changing the layout object's visibility property
 					if (visibility === 'visible') {
-						map.setLayoutProperty(clickedLayer, 'visibility', 'none');
+						beforeMap.setLayoutProperty(clickedLayer, 'visibility', 'none');
 						this.className = '';
 					} else {
 						this.className = 'active';
-						map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
+						beforeMap.setLayoutProperty(clickedLayer, 'visibility', 'visible');
 					}
 				}
 				var layers = document.getElementById('map-menu');
 				layers.appendChild(link);
 			}
 
+			for (var i = 0; i < featuresLayerIds.length; i++) {
+				var id = featuresLayerIds[i];
+			
+				var link = document.createElement('a');
+				link.className = 'active';
+				link.textContent = id;
 
-
-
-			// Add geolocate control to the map.
-			map.addControl(
-				new mapboxgl.GeolocateControl({
-					positionOptions: {
-						enableHighAccuracy: true
-					},
-					trackUserLocation: true
-				})
-			);
+				link.onclick = function(e) {
+					var targetType = document.getElementById('featureType').value = e.srcElement.outerText
+					if (targetType != -1){
+						geolocate.trigger()
+						return 
+					}
+				}
+				var layers = document.getElementById('map-feature');
+				layers.appendChild(link);
+			}
 		})
 	</script>
 </body>
