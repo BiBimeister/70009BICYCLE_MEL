@@ -27,7 +27,13 @@
 	<link rel="stylesheet" href="mapbox.css">
 	<!-- Mapbox Js-->
 	<script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
-    <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
+	<link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
+	
+	<!-- Turf Js -->
+	<script src='https://api.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js'></script>
+
+	<!-- Data Js -->
+	<script language=javascript src='./data.js'></script>
 
 	
 	<link rel="stylesheet" href="fwslider.css" media="all">
@@ -232,20 +238,17 @@
 			center: [144.955184, -37.832555]
 		});
 
-		var volumeData = {
-			"type": "geojson", "data": {"type": "FeatureCollection", "features": [{"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.96138, -37.81992], [144.960053, -37.825963], [144.970126, -37.823317], [144.967438, -37.817448], [144.963791, -37.809612]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.957006, -37.825213], [144.955046, -37.8211], [144.954158, -37.819073], [144.951431, -37.81321]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.935898, -37.80994], [144.944713, -37.815089], [144.947427, -37.821009], [144.952186, -37.824209]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.947479, -37.823795], [144.947632, -37.822382], [144.947427, -37.821009]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.973917, -37.818424], [144.977808, -37.823105], [144.97644, -37.823025]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.955046, -37.8211], [144.957546, -37.820346], [144.967438, -37.817448], [144.972394, -37.816005], [144.974854, -37.815277]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.947427, -37.821009], [144.954158, -37.819073], [144.973964, -37.813323]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.970248, -37.818619], [144.973917, -37.818424]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.972394, -37.816005], [144.968765, -37.808155]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.974854, -37.815277], [144.973964, -37.813323], [144.973053, -37.811378], [144.972971, -37.809248]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.944713, -37.815089], [144.951431, -37.81321], [144.953873, -37.812531], [144.956451, -37.811749], [144.958847, -37.811039], [144.961361, -37.810334], [144.963791, -37.809612], [144.966278, -37.808903], [144.968765, -37.808155]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.959, -37.787979], [144.957474, -37.799747], [144.963791, -37.809612]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.983541, -37.810411], [144.975632, -37.809547], [144.972971, -37.809248]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.963226, -37.804562]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.943954, -37.800289], [144.93885, -37.795421]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.951172, -37.796627], [144.957474, -37.799747]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.93885, -37.795421], [144.939982, -37.78757]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.93885, -37.795421], [144.935852, -37.795096], [144.930987, -37.79454], [144.927689, -37.794117]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.936034, -37.788788], [144.925278, -37.787695], [144.935852, -37.795096]]}}, {"type": "Feature", "properties": {"color": "#F7455D"}, "geometry": {"type": "LineString", "coordinates": [[144.941956, -37.793993]]}}]}
-		}
 
 		map.on('load', function() {
 
 			map.loadImage('http://tianzhipengfei.xin/static/cycle.png', (error, image) => {
 				if (error) throw error;
-				map.addImage('park_image', image);
+				map.addImage('dock_image', image);
 			});
 
 			map.loadImage('http://tianzhipengfei.xin/static/placeholder.png', (error, image) => {
 				if (error) throw error;
-				map.addImage('dock_image', image);
+				map.addImage('park_image', image);
 			});
 
 			map.loadImage('http://tianzhipengfei.xin/static/shopping.png', (error, image) => {
@@ -253,28 +256,20 @@
 				map.addImage('shop_image', image);
 			});
 
-			// add source and layer for volume
-			// map.addSource('volume', volumeData);
-			// map.addLayer({
-			// 	'id': 'volume',
-			// 	'type': 'line',
-			// 	'source': 'volume',
-			// 	'layout': {
-			// 			// make layer visible by default
-			// 			'visibility': 'visible'
-			// 		}
-			// 	});
-
-				// add source and layer for bicycle stops
-			map.addSource('stops', {
-				type: 'vector',
-				url: 'mapbox://tianzhipengfei.437a9quc'
+			map.addSource('nearest-location', {
+				type: 'geojson',
+				data: {
+				type: 'FeatureCollection',
+				features: []
+				}
 			});
+
+			// add source and layer for bicycle stops
+			map.addSource('stops', stopData);
 			map.addLayer({
 				'id': 'stops',
 				'type': 'symbol',
 				'source': 'stops',
-				'source-layer': 'preprocessed_stop1-dqalw3',
 				'layout': {
 						// make layer visible by default
 						'visibility': 'visible',
@@ -284,15 +279,11 @@
 				});
 
 			// add source and layer for bicycle shops
-			map.addSource('shops', {
-				type: 'vector',
-				url: 'mapbox://tianzhipengfei.9158xwfd'
-			});
+			map.addSource('shops', shopData);
 			map.addLayer({
 				'id': 'shops',
 				'type': 'symbol',
 				'source': 'shops',
-				'source-layer': 'bike_shop_2019-89iw44',
 				'layout': {
 					// make layer visible by default
 					'visibility': 'visible',
@@ -302,17 +293,11 @@
 			});
 
 			// add source and layer for bicycle shared docks
-			map.addSource('docks', {
-				type: 'vector',
-				url: 'mapbox://tianzhipengfei.3ccc2p6y'
-			});
-
-
+			map.addSource('docks', dockData);
 			map.addLayer({
 				'id': 'docks',
 				'type': 'symbol',
 				'source': 'docks',
-				'source-layer': 'Bike_Share_Dock_Locations-3loyal',
 				'layout': {
 					// make layer visible by default
 					'visibility': 'visible',
@@ -389,6 +374,67 @@
 				var featureType = document.getElementById('featureType').value;
 				console.log(featureType)	
 				document.getElementById('featureType').value = -1
+
+				var data = null
+				var origin_layer = null
+				// find nearest stops 
+				if(featureType == "FIND STOPS"){
+					data = map.getSource("stops").serialize();
+					origin_layer = "stops"
+				}
+				// find nearest stops 
+				else if(featureType == "FIND SHOPS"){
+					data = map.getSource("shops").serialize();
+					origin_layer = "shops"
+				}
+				// find nearest stops 
+				else if(featureType == "FIND DOCKS"){
+					data = map.getSource("docks").serialize();
+					origin_layer = "docks"
+				}
+				var point = {
+					"type": "Feature",
+					"properties": {
+						"marker-color": "#0f0"
+					},
+					"geometry": {
+						"type": "Point",
+						"coordinates": [latitude, longitude]
+					}
+				};
+				var candidates = data.data
+				var nearestLocation = turf.nearest(point, candidates);
+				console.log(nearestLocation)
+				if (nearestLocation !== null) {
+					// Update the 'nearest-location' data source to include
+					// the nearest location
+
+					var mapLayer = map.getLayer('nearest-location');
+					if(typeof(mapLayer) !== 'undefined') {
+					// Remove map layer 
+						map.removeLayer('nearest-location')
+					}
+
+					map.getSource('nearest-location').setData({
+						type: 'FeatureCollection',
+						features: [
+							nearestLocation
+						]
+					});
+
+
+
+					// Create a new circle layer from the 'nearest-library' data source
+					map.addLayer({
+						id: 'nearest-location',
+						type: 'circle',
+						source: 'nearest-location',
+						paint: {
+							'circle-radius': 20,
+							'circle-color': '#486DE0'
+						}
+					}, origin_layer);
+				}
 			});
 
 			// set up the corresponding toggle button for each layer
@@ -429,32 +475,52 @@
 				link.textContent = id;
 
 				link.onclick = function(e) {
-					console.log(e.srcElement.outerText)
 					var targetType = document.getElementById('featureType').value = e.srcElement.outerText
-					if (targetType == -1){
+					console.log(targetType)
+					if (targetType != -1){
 						geolocate.trigger()
 						return 
 					}
-					var data = null
-					// find nearest stops 
-					if(targetType == "FIND STOPS"){
-						data = map.getSource("stops").serialize();
-					}
-					// find nearest stops 
-					else if(targetType == "FIND SHOPS"){
-						data = map.getSource("shops").serialize();
-					}
-					// find nearest stops 
-					else if(targetType == "FIND DOCKS"){
-						data = map.getSource("docks").serialize();
-					}
-
-					console.log(data)
 				}
 				var layers = document.getElementById('map-feature');
 				layers.appendChild(link);
 			}
 		})
+	
+		map.on('click', function(e) {
+			// Return any features from the 'libraries' layer whenever the map is clicked
+			var libraryFeatures = map.queryRenderedFeatures(e.point, { layers: ['libraries'] });
+			if (!libraryFeatures.length) {
+				return;
+			}
+			var libraryFeature = libraryFeatures[0];
+
+			// Using Turf, find the nearest hospital to library clicked
+			var nearestHospital = turf.nearest(libraryFeature, hospitals);
+
+			// If a nearest library is found
+			if (nearestHospital !== null) {
+				// Update the 'nearest-library' data source to include
+				// the nearest library
+				map.getSource('nearest-hospital').setData({
+					type: 'FeatureCollection',
+					features: [
+						nearestHospital
+					]
+				});
+				// Create a new circle layer from the 'nearest-library' data source
+				map.addLayer({
+				id: 'nearest-hospital',
+				type: 'circle',
+				source: 'nearest-hospital',
+				paint: {
+					'circle-radius': 12,
+					'circle-color': '#486DE0'
+				}
+				}, 'hospitals');
+			}
+			});
+
 	</script>
 </body>
 </html>
