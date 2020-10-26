@@ -88,11 +88,7 @@ body > div.images-slider {
 #fwslider .progress {
     height:4px;
     width:0%;
-<<<<<<< Updated upstream
-    background-color:#2C3E50;
-=======
     background-color:#95a792;
->>>>>>> Stashed changes
     float:left;
 }
 #fwslider .slide_content {
