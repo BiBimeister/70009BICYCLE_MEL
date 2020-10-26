@@ -39,18 +39,20 @@ function r(s, h, u) {
                 if (! (n instanceof Element && n.appendChild)) throw new Error("Invalid container specified. Must be CSS selector or HTML element.");
                 n.appendChild(this._controlContainer)
             }
-            this._bounds = t.getContainer().getBoundingClientRect();
-            var r = (this._horizontal ? this._bounds.height: this._bounds.width) / 2;
-            this._setPosition(r),
-            this._clearSync = s(e, t),
-            this._onResize = function() {
-                this._bounds = t.getContainer().getBoundingClientRect(),
-                this.currentPosition && this._setPosition(this.currentPosition)
-            }.bind(this),
-            t.on("resize", this._onResize),
-            this.options && this.options.mousemove && (e.getContainer().addEventListener("mousemove", this._onMove), t.getContainer().addEventListener("mousemove", this._onMove)),
-            this._swiper.addEventListener("mousedown", this._onDown),
-            this._swiper.addEventListener("touchstart", this._onDown)
+            setTimeout( () => { 
+                this._bounds = t.getContainer().getBoundingClientRect();
+                var r = (this._horizontal ? this._bounds.height: this._bounds.width) / 2;
+                this._setPosition(r),
+                this._clearSync = s(e, t),
+                this._onResize = function() {
+                    this._bounds = t.getContainer().getBoundingClientRect(),
+                    this.currentPosition && this._setPosition(this.currentPosition)
+                }.bind(this),
+                t.on("resize", this._onResize),
+                this.options && this.options.mousemove && (e.getContainer().addEventListener("mousemove", this._onMove), t.getContainer().addEventListener("mousemove", this._onMove)),
+                this._swiper.addEventListener("mousedown", this._onDown),
+                this._swiper.addEventListener("touchstart", this._onDown)
+            }, 2000);
         }
         i.prototype = {
             _setPointerEvents: function(e) {
@@ -69,8 +71,6 @@ function r(s, h, u) {
                 i = this._horizontal ? "rect(" + e + "px, 999em, " + this._bounds.height + "px,0)": "rect(0, 999em, " + this._bounds.height + "px," + e + "px)";
                 this._mapA.getContainer().style.clip = n,
                 this._mapB.getContainer().style.clip = i,
-                // console.log(n)
-                // console.log(i)
                 this.currentPosition = e
             },
             _onMove: function(e) {
