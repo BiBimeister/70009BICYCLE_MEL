@@ -384,53 +384,7 @@
 				}
 			});
 
-			// map.addSource('crashes',{
-			// 	type:'vector',
-			// 	url:'mapbox://tianzhipengfei.cvhxe4pc'
-			// })
-
-			// map.addLayer({
-			// 	'id':'day_crashes',
-			// 	'type':'circle',
-			// 	'source':'crashes',
-			// 	'source-layer':'Crashes_mingdong-21jy40',
-			// 	layout:{
-			// 		visibility:'visible'
-			// 	},
-			// 	'filter':[
-			// 		'all',
-			// 		['!=','Bicyclist',0],
-			// 		['==','Light Condition','Day'||'Dusk/Dawn']
-			// 	],
-			// 	"paint":{
-			// 		"circle-color":"#e33b3b",
-			// 		"circle-radius":3,
-			// 		"circle-opacity":0.8
-			// 	}
-			// })
-
-			// map.addLayer({
-			// 	'id':'night_crashes',
-			// 	'type':'circle',
-			// 	'source':'crashes',
-			// 	'source-layer':'Crashes_mingdong-21jy40',
-			// 	layout:{
-			// 		visibility:'visible'
-			// 	},
-			// 	'filter':[
-			// 		'all',
-			// 		['!=','Bicyclist',0],
-			// 		['!=','Light Condition','Day'||'Dusk/Dawn']
-			// 	],
-			// 	"paint":{
-			// 		"circle-color":"#0f77ff",
-			// 		"circle-radius":3,
-			// 		"circle-opacity":0.8
-			// 	}
-			// });
-
 			// enumerate ids of the layers
-			// var toggleableLayerIds = ['stops', 'volume', 'shops', 'docks', 'day_crashes', 'night_crashes'];
 			var toggleableLayerIds = ['Stops', 'Shops', 'Public bicycle'];
 			var featuresLayerIds = ['Nearest Stop', 'Nearest Shop', 'Nearest Public bicycle']
 
