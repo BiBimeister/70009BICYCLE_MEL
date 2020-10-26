@@ -431,8 +431,8 @@
 
 			// enumerate ids of the layers
 			// var toggleableLayerIds = ['stops', 'volume', 'shops', 'docks', 'day_crashes', 'night_crashes'];
-			var toggleableLayerIds = ['stops', 'shops', 'docks'];
-			var featuresLayerIds = ['FIND STOPS', 'FIND SHOPS', 'FIND DOCKS']
+			var toggleableLayerIds = ['Stops', 'Shops', 'Public bicycle'];
+			var featuresLayerIds = ['Nearest Stop', 'Nearest Shop', 'Nearest Public bicycle']
 
 
 			// Add geolocate control to the map.
@@ -442,8 +442,10 @@
 				},
 				trackUserLocation: false
 			});
+
 			// Add the control to the map.
 			beforeMap.addControl(geolocate);
+
 			// Set an event listener that fires
 			// when a geolocate event occurs.
 			geolocate.on('geolocate', function(position) {
@@ -469,17 +471,17 @@
 				var data = null
 				var origin_layer = null
 				// find nearest stops 
-				if(featureType == "FIND STOPS"){
+				if(featureType == "Nearest Stop"){
 					data = beforeMap.getSource("stops").serialize();
 					origin_layer = "stops"
 				}
-				// find nearest stops 
-				else if(featureType == "FIND SHOPS"){
+				// find nearest shop 
+				else if(featureType == "Nearest Shop"){
 					data = beforeMap.getSource("shops").serialize();
 					origin_layer = "shops"
 				}
-				// find nearest stops 
-				else if(featureType == "FIND DOCKS"){
+				// find nearest public bicycle 
+				else if(featureType == "Nearest Public bicycle"){
 					data = beforeMap.getSource("docks").serialize();
 					origin_layer = "docks"
 				}
@@ -538,6 +540,14 @@
 
 				link.onclick = function(e) {
 					var clickedLayer = this.textContent;
+					['Stops', 'Shops', 'Public bicycle'];
+					if(clickedLayer == 'Stops'){
+						clickedLayer = 'stops'
+					} else if(clickedLayer == 'Shops'){
+						clickedLayer = 'shops'
+					}  else if(clickedLayer == 'Public bicycle'){
+						clickedLayer = 'docks'
+					} 
 					e.preventDefault();
 					e.stopPropagation();
 
