@@ -69,7 +69,7 @@
 }
 
 #map-menu a.active:hover {
-    background: #3074a4;
+    background: #97b391;
 }
 
 
@@ -82,12 +82,12 @@
     top: 23vh;
     z-index: 1;
     border-radius: 3px;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Questrial';
 }
 
 #map-feature a {
     background: #fff;
-    font-size: 13px;
+    font-size: 18px;
     color: #404040;
     display: block;
     margin: 0;
@@ -108,13 +108,12 @@
 }
 
 #map-feature a.active {
-    background-color: #3887be;
+    background-color: #95a792;
     color: #ffffff;
 }
 
 #map-feature a.active:hover {
-    background: #95a392;
-	font-size: 19px;
+    background: #97b391;
+	font-size: 18px;
 	color: #ffffff;
-	text-decoration: underline;
 }
