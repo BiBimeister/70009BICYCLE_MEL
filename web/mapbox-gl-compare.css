@@ -3,7 +3,7 @@
   position:absolute;
   width:2px;
   height:100%;
-  z-index:1;
+  z-index:9;
 }
 .mapboxgl-compare .compare-swiper-vertical {
   background-color:#95a792;
@@ -27,7 +27,7 @@
   height:2px;
 }
 .mapboxgl-compare .compare-swiper-horizontal {
-  background-color:#95a792;
+  background-color:#95a792	;
   box-shadow:inset 0 0 0 2px #fff;
   display:inline-block;
   border-radius:50%;
