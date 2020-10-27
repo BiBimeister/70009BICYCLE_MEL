@@ -76,6 +76,9 @@ function r(s, h, u) {
             _onMove: function(e) {
                 this.options && this.options.mousemove && this._setPointerEvents(e.touches ? "auto": "none"),
                 this._horizontal ? this._setPosition(this._getY(e)) : this._setPosition(this._getX(e))
+                this.fire("moving", {
+                    currentPosition: this.currentPosition / this._bounds.width
+                })
             },
             _onMouseUp: function() {
                 document.removeEventListener("mousemove", this._onMove),
