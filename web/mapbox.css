@@ -1,6 +1,5 @@
 .mapbox-wrapper{
     position: relative;
-    top: 10vh;
     width: 100%;
     height: 100vh;
 }
@@ -13,6 +12,11 @@
     bottom: 5vh;
     left: 3vw;
     right: 3vw;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .map {
@@ -31,12 +35,26 @@
     flex-direction: column;
     position: relative;
     width: 10vw;
-    left: 86vw;
-    top: 23vh;
+    left: 5vw;
+    top: 15vh;
     z-index: 1;
     border-radius: 3px;
     font-family: 'Questrial';
-	font-color: #847b6d
+    color: #847b6d;
+    visibility: visible;
+}
+
+#map-feature {
+    height: auto;
+    flex-direction: column;
+    position: relative;
+    width: 10vw;
+    left: 5vw;
+    top: 30vh;
+    z-index: 1;
+    border-radius: 3px;
+    font-family: 'Questrial';
+    visibility: visible;
 }
 
 #map-menu a {
@@ -48,7 +66,7 @@
     padding: 0;
     padding: 10px;
     text-decoration: none;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     text-align: center;
 	font-family: 'Questrial';
 	opacity:0.85;
@@ -69,33 +87,20 @@
 }
 
 #map-menu a.active:hover {
-    background: #3074a4;
-}
-
-
-#map-feature {
-    height: auto;
-    flex-direction: column;
-    position: relative;
-    width: 10vw;
-    left: 5vw;
-    top: 23vh;
-    z-index: 1;
-    border-radius: 3px;
-    font-family: 'Open Sans', sans-serif;
+    background: #9cc196;
 }
 
 #map-feature a {
     background: #fff;
-    font-size: 13px;
+    font-size: 18px;
     color: #404040;
     display: block;
     margin: 0;
-    padding: 0;
     padding: 10px;
     text-decoration: none;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     text-align: center;
+	opacity:0.8;
 }
 
 #map-feature a:last-child {
@@ -108,13 +113,75 @@
 }
 
 #map-feature a.active {
-    background-color: #3887be;
+    background-color: #95a792;
     color: #ffffff;
 }
 
 #map-feature a.active:hover {
-    background: #95a392;
-	font-size: 19px;
+    background: #9cc196;
+	font-size: 18px;
 	color: #ffffff;
-	text-decoration: underline;
 }
+
+.compare-swiper-vertical{
+	background-color: #f8f8f8;
+}
+
+
+/**
+* Set rules for how the map overlays
+* (information box and legend) will be displayed
+* on the page. */
+.map-overlay {
+    position: absolute;
+    bottom: 0;
+    right: 1vw;
+    background: rgba(255, 255, 255, 0.8);
+    margin-right: 20px;
+    font-family: Arial, sans-serif;
+    overflow: auto;
+    border-radius: 3px;
+  }
+  
+  #features {
+    top: 0;
+    height: 100px;
+    margin-top: 20px;
+    width: 250px;
+  }
+  
+  #legend {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    line-height: 18px;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    margin-bottom: 5vh;
+    width: 11vw;
+    visibility: visible;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .legend-key {
+    border-radius: 20%;
+    width: 1vw;
+    height: 1vw;
+    /* margin-right: 5px; */
+  }
+
+  .legend-value {
+    border-radius: 20%;
+    width: 7vw;
+    height: 2vw;
+    text-align: left;
+    padding-left: 1vw;
+    /* margin-right: 5px; */
+  }
+
+  .legend-item{
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
+  }
