@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Bicycles</title>
+	<title>Welcome to Let's Bicycle!</title>
 
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -16,7 +16,6 @@
 	<!--Website CSS-->
 	<link rel="stylesheet" href="styles.css">
 	<link rel="stylesheet" href="letter.css">
-	<link rel="stylesheet" href="tooltip.css">
 	<!--Website Js-->
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/easing.js"></script>
@@ -36,9 +35,7 @@
 	<script src='https://api.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js'></script>
 
 	<!-- Data Js -->
-	<script language=javascript src='./data.js'></script>
-
-	
+	<script language=javascript src='./data.js'></script>	
 	<link rel="stylesheet" href="fwslider.css" media="all">
 	<script src="js/jquery-ui.min.js"></script>
 	<script src="js/css3-mediaqueries.js"></script>
@@ -176,7 +173,7 @@
 </div>
 
 
-<div id="about-us" style="display: block;"><span style="opacity: 1;"></span></div>
+<a href="https://www.melbourne.vic.gov.au/parking-and-transport/cycling/Pages/bicycle-plan.aspx" target="_blank" id="left-bottom" style="display: block;" title="Click to Explore More"><span style="opacity: 1;"></span></a>
 <a href="#" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"></span></a>
 
 	<!--Scripts-->
@@ -433,8 +430,8 @@
 			});
 
 			// enumerate ids of the layers
-			var toggleableLayerIds = ['Stops', 'Shops', 'Public bicycle'];
-			var featuresLayerIds = ['Nearest Stop', 'Nearest Shop', 'Nearest Public bicycle']
+			var toggleableLayerIds = ['Docks', 'Shops', 'Public bicycle'];
+			var featuresLayerIds = ['Nearest Dock', 'Nearest Shop', 'Nearest Public bicycle']
 
 
 			// Add geolocate control to the map.

@@ -171,7 +171,7 @@
 .images-slider{
 }
 
-#about-us {
+#left-bottom {
 	display: none;
 	text-decoration: none;
 	position: fixed;
@@ -182,7 +182,15 @@
 	height:32px;
 	border: none;
 	text-indent: 100%;
-	background: url(Images/member.png) no-repeat right top;
+	background: url(Images/domain.png) no-repeat right top;
+}
+#left-bottom:hover {
+	transform: rotate(10deg) scale(1.1,1.1);;
+	-ms-transform: rotate(10deg) scale(1.1,1.1);		/* IE 9 */
+	-webkit-transform: rotate(10deg) scale(1.1,1.1);	/* Safari and Chrome */
+	-o-transform: rotate(10deg) scale(1.1,1.1);		/* Opera */
+	-moz-transform: rotate(10deg) scale(1.1,1.1);		/* Firefox */
+
 }
 
 hr{
