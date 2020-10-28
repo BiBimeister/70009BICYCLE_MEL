@@ -103,9 +103,8 @@
 }
 
 #screen3{
-	padding-bottom: 90vh;
-    text-align: center;
-    background: #e3d9ca;
+	text-align:center;
+    background: #49393B;
 }
 
 #menu-bar a {
@@ -198,4 +197,46 @@ hr{
 	border-top: 2px solid rgb(144 136 124);
 	margin-top: 0rem;
 }
+.stats-text{
+	display: flex;
+  	justify-content: center;
+  	align-items: center;
+	background-color: #d2d3c9;
+	font-family: 'Questrial';
+	color: #403f48;
+	padding: 5px 10px;
+	text-align: left;
+}
 
+.stats-row{
+	padding: 10px;
+}
+
+.stats-title{
+	color: #375511;
+    font-weight: 200;
+    font-family: 'Questrial';
+    letter-spacing: 2px;
+  	text-transform: uppercase;
+  	font-size: 2.2vw;
+  	padding-top: 4vw;
+  	padding-bottom: 10px;
+
+}
+
+.stats-minititle{
+	color: #847b6d;
+    font-weight: 200;
+    font-family: 'Questrial';
+    letter-spacing: 1px;
+  	text-transform: uppercase;
+  	font-size: 1.3vw;
+  	padding-top: 2vw;
+  	padding-bottom: 1.4vw;
+}
+
+.stats-mask{
+	background-color: #e3d9ca;
+	padding: 20px;
+	margin: 3vh 1.5vh;
+}
