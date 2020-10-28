@@ -292,7 +292,14 @@
 		</div>
 					
 
-	<div class="col-sm-4 my-auto"> <div class="stats-text"> <br> The left bar chart demonstrates the changes in the number of bicycle stores from 2002 to 2019, in the city of Melbourne. In recent ten years, the scale of bicycle business reveals a rising trend, which keeps at approximately 20-25 shops. Such commerce condition means there is a stable number of citizens have a requirement to enjoy bicycle purchasing, rental and repair services. </div>
+	<div class="col-sm-4 my-auto"> 
+		<div class="stats-text"> 
+			<br>From the bar chart we can observe a rising trend in the number of bicycle related businesses over the past years in the city of Melbourne. <br><br>
+
+There is a significant increase in the number of bicycle businesses in 2010. This may be due to the initiation of the now infamous Melbourne Bike Share scheme by the government in the same year which may have encouraged the usage of bicycles by the public. <br><br>
+
+The last few years have had a stabilized number of bicycle businesses, approximately 20-15 businesses. We conclude that this means that the users that have a requirement to enjoy bicycle purchasing, rental and repair services have stabilized. <br><br>
+		</div>
 	</div>
 	</div>
 	</div>
@@ -414,15 +421,15 @@
 		var beforeMap = new mapboxgl.Map({
 			container: 'before-map',
 			style: 'mapbox://styles/tianzhipengfei/ckgnja5mz050t19nyuqxao4gp',
-			zoom: 14,
-			center: [144.955184, -37.832555]
+			zoom: 12,
+			center: [144.9629, -37.8097]
 		});
 
 		var afterMap = new mapboxgl.Map({
 			container: 'after-map',
 			style: 'mapbox://styles/tianzhipengfei/ckgp7nfvc2gz21aqp4xo928mt',
-			zoom: 14,
-			center: [144.955184, -37.832555]
+			zoom: 12,
+			center: [144.9629, -37.8097]
 		});
 
 		var container = '#comparison-container';
@@ -448,7 +455,6 @@
 				legend_wrapper.style.visibility = 'hidden'
 			} else{
 				var menu_wrapper = document.getElementById('map-menu')
-				console.log(menu_wrapper.style.visibility)
 				if(menu_wrapper.style.visibility != 'visible')
 					menu_wrapper.style.visibility = 'visible'
 				var feature_wrapper = document.getElementById('map-feature')
@@ -686,7 +692,6 @@
 
 				link.onclick = function(e) {
 					var clickedLayer = this.textContent;
-					['Stops', 'Shops', 'Public bicycle'];
 					if(clickedLayer == 'Stops'){
 						clickedLayer = 'stops'
 					} else if(clickedLayer == 'Shops'){
