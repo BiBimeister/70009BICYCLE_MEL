@@ -42,6 +42,11 @@
     font-family: 'Questrial';
     color: #847b6d;
     visibility: visible;
+	opacity:0.25;
+}
+
+#map-menu:hover{
+	opacity:0.85;
 }
 
 #map-feature {
@@ -55,6 +60,11 @@
     border-radius: 3px;
     font-family: 'Questrial';
     visibility: visible;
+	opacity:0.25;
+}
+
+#map-feature:hover{
+	opacity:0.85;
 }
 
 #map-menu a {
