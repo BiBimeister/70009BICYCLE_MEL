@@ -144,8 +144,8 @@
 * on the page. */
 .map-overlay {
     position: absolute;
-    bottom: 0;
-    right: 1vw;
+    bottom: 1vh;
+    right: 3vw;
     background: rgba(255, 255, 255, 0.8);
     margin-right: 20px;
     font-family: Arial, sans-serif;
@@ -165,7 +165,6 @@
     line-height: 42px;
     padding-top: 2vh;
     padding-bottom: 2vh;
-    margin-bottom: 5vh;
     width: 11vw;
     visibility: visible;
     display: flex;
