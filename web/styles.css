@@ -96,12 +96,41 @@
     background: #d2d3c9;
 }
 
+.light-guide{
+	text-align:left;
+	color: #fff;
+	font-family: 'Teko';
+	font-weight:700;
+	left: 0px;
+	position:relative;
+	display:block;
+	width:50%;
+	float:left;
+}
+
+.volume-guide{
+	text-align:right;
+	color: #595959;
+	font-family: 'Teko';
+	font-weight:400;
+	right: 0px;
+	position:relative;
+	display:block;
+	width:50%;
+	float: right;
+    margin-right: 50px;
+    font-size: 20px;
+}
+
+.volume-guide:hover{
+	font-weight:550;
+}
 
 #screen2{
     text-align: center;
     background: #d2d3c9;
 	padding-bottom: 40px;
-	height: 120vh;
+	height: 105vh;
 }
 
 #screen3{
