@@ -627,7 +627,7 @@ The last few years have had a stabilized number of bicycle businesses, approxima
 				var data = null
 				var origin_layer = null
 				// find nearest stops 
-				if(featureType == "Nearest Stop"){
+				if(featureType == "Nearest Dock"){
 					data = beforeMap.getSource("stops").serialize();
 					origin_layer = "stops"
 				}
@@ -696,7 +696,7 @@ The last few years have had a stabilized number of bicycle businesses, approxima
 
 				link.onclick = function(e) {
 					var clickedLayer = this.textContent;
-					if(clickedLayer == 'Stops'){
+					if(clickedLayer == 'Docks'){
 						clickedLayer = 'stops'
 					} else if(clickedLayer == 'Shops'){
 						clickedLayer = 'shops'
