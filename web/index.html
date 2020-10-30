@@ -301,7 +301,7 @@
 
 			                        From the bar chart comparing the calories burnt per kg while exercising for an hour we can see that cycling burns high calories as compared to other sports. <br><br>
 			                        
-			                        Consider the small cycling proportions for work and weekday trops, we’d like to suggest facilities to promote the usage of cycling in Victoria to benefit the overall population health. This would provide not only a health benefit to the individual but also an environmental one. <br><br>
+			                        Consider the small cycling proportions for work and weekday trips, we’d like to suggest facilities to promote the usage of cycling in Victoria to benefit the overall population health. This would provide not only a health benefit to the individual but also an environmental one. <br><br>
 			                    	</div>
 			                    </div>
 			                </div>
@@ -645,6 +645,11 @@
 				document.getElementById('featureType').value = -1
 
 				map.setSlider(10000)
+
+				var legend_wrapper = document.getElementById('legend')
+				if(legend_wrapper.style.visibility != 'hidden')
+					legend_wrapper.style.visibility = 'hidden'
+
 				var data = null
 				var origin_layer = null
 				// find nearest stops 
