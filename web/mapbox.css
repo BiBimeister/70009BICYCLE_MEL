@@ -144,7 +144,7 @@
 * on the page. */
 .map-overlay {
     position: absolute;
-    bottom: 1vh;
+    bottom: 5vh;
     right: 3vw;
     background: rgba(255, 255, 255, 0.8);
     margin-right: 20px;
