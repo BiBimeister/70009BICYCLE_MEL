@@ -94,221 +94,242 @@
 	</div>
 	</div>
 </div>
-
-<!--1.5 Screen Slider-->
-<div id="screen1-5">		
-		<!----start-images-slider---->
-		<div class="images-slider">
-			<!-- start slider -->
-		    <div id="fwslider">
-		        <div class="slider_container">
-		            <div class="slide"> 
-					<img src="Images/slideimage3.jpg" alt=""/>
-		            </div>
-		            <!-- /Duplicate to create more slides -->
-		            <div class="slide">
-		            <img src="Images/slideimage2.jpg" alt=""/>
-		            </div>
-		            <div class="slide">
-		            <img src="Images/slideimage1.jpg" alt=""/>		               
-		            </div>
-					<div class="slide">
-		            <img src="Images/slideimage0.jpg" alt=""/>		               
-		            </div>
-		            <!--/slide -->
-		        </div>
-		        <div class="timers"> </div>
-		        <div class="slidePrev"><span> </span></div>
-		        <div class="slideNext"><span> </span></div>
-		    </div>
-		    
-</div>
-	<div class="container-fluid">		
-	</div>
-</div>
-
 <!--2nd Screen MAP-->
 <div id="screen2">
-	<div class="mapbox-wrapper">
-	<div class="title-design">
-			<div class="col-sm-12"> MAP </div>			
-	</div>
-	<div class="light-guide" >
-	</div>
-	<div class="volume-guide" >
-		<p> Discover bicycle density >>></p>
-	</div>
-	<div id="comparison-container" style="margin-top: -45px;">
-		<div id="before-map" class="map"></div>
-		<div id="after-map" class="map"></div>
-	</div>
-	<div id="map-menu"></div>
-	<div id="map-feature"></div>
-	<div class='map-overlay' id='legend'></div>
-	<div id="featureType" style="visibility: hidden;"> -1 </div>
-	
+	<div class="container-fluid" style="padding: 0px; overflow: hidden;">
+		<div class="row divider"></div>
+		<div class="title-design">
+			<div class="row"><div class="col-sm-12"> MAP </div></div>			
+		</div>
+		<div class="mapbox-wrapper">
+		<div class="light-guide" >
+		</div>
+		<div class="volume-guide" >
+			<p> Discover bicycle density >>></p>
+		</div>
+		<div id="comparison-container" style="margin-top: -45px;">
+			<div id="before-map" class="map"></div>
+			<div id="after-map" class="map"></div>
+		</div>
+		<div id="map-menu"></div>
+		<div id="map-feature"></div>
+		<div class='map-overlay' id='legend'></div>
+		<div id="featureType" style="visibility: hidden;"> -1 </div>
+
+		</div>
 	</div>
 </div>
+
+<div class="container-fluid"><div class="row divider"></div></div>
+
 
 <!--3rd Screen Report-->
 <div id="screen3">
-	<div class="container-fluid" style="padding: 0px; overflow: hidden;">
-		<div class="row title-design">
-			<div class="col-sm-12"> The Stats! </div>			
-		</div>
-		
+    <div class="container-fluid" style="padding: 0px; overflow: hidden;">
+        <div class="row title-design">
+            <div class="col-sm-12"> The Stats! 
+            </div>           
+        </div>
 
+        <!--Participation-->
+        <div class="stats-mask">
+            <div class="container-fluid">
+
+	            <div class="row">
+	                <div class="col-sm-4 sub-title"> 1. Participation </div>
+	                <div class="col-sm-8"></div>
+	            </div>
+
+	            <div class="row">
+	                <div class="col-sm-1"></div>
+	                <div class="col-sm-5"><div class="participate-title">What is common transportation for work and trip?</div></div>
+	                <div class="col-sm-5"><div class="participate-title">How many people participate cycling?</div></div>
+	                <div class="col-sm-1"> </div>   
+	            </div>
+
+	            <div class="row">
+	                <div class="col-sm-1"> </div>
+	                <div class="col-sm-5"><img src="Images/BicycleUser.png" alt="Logo" style=" height: 100%; width: 100%; object-fit: contain"></div>
+	                <div class="col-sm-5"><img src="Images/BicyclePop.png" alt="Logo" style=" height: 100%; width: 100%; object-fit: contain"> </div>
+	                <div class="col-sm-1"> </div>
+	            </div>
+
+	            <div class="row">
+	                <div class="col-sm-1"></div>
+	                <div class="col-sm-5"><div class="participate-text">The purpose of cycling can be divided into weekday trip and cycling to work. The percentage of people who cycling during the two purposes keeps unchanged, which is 2%. （The change of percentages of different way to travel from weekday trip to cycling to work shows that people, who chooses not to take public transport when taking weekday trips, choose to walk instead of cycling.）</div></div>
+	                <div class="col-sm-5"><div class="participate-text">The charts show the information of cycling in Melbourne, from the perspective of participation, purpose, gender and age.From the chart of participation of cycle, it can be seen that from 2011-2019, the percentage of people who had participated in cycling in the last one year keeps decreasing.</div></div>
+	                <div class="col-sm-1"> </div>
+	            </div>
+
+	            <div class="row">
+	                <div class="col-sm-1"></div>
+	                <div class="col-sm-5"><div class="participate-title">Man or woman likes cycling?</div></div>
+	                <div class="col-sm-5"><div class="participate-title">Who go cycling more?</div></div>
+	                <div class="col-sm-1"> </div>   
+	            </div>
+
+	            <div class="row">
+	                <div class="col-sm-1"> </div>
+	                <div class="col-sm-5"><img src="Images/GenderBicycle.jpeg" alt="Logo" style=" height: 100%; width: 100%; object-fit: contain"></div>
+	                <div class="col-sm-5"><img src="Images/BicycleAge.png" alt="Logo" style=" height: 90%; width: 90%; object-fit: contain"> </div>
+	                <div class="col-sm-1"> </div>
+	            </div>
+
+	            <div class="row" style="padding-bottom: 10vh">
+	                <div class="col-sm-1"></div>
+	                <div class="col-sm-5"><div class="participate-text">Tthe percentage of males who had participated in cycling in the last one year is higher than of females, which is around 40% to 30%. </div></div>
+	                <div class="col-sm-5"><div class="participate-text">The age is grouped into five groups, people aged from 0-19 have a 70% cycling participation, approximately, while the percentage of 18-49 is 35%, and 50+ is under 20%.</div></div>
+	                <div class="col-sm-1"> </div>
+	            </div>
+
+	            <div class="row divider"></div>
+        	</div>     
+		</div>
 		<div class="stats-mask">
-		<!-- Tableau The ratio of alcohol related accidents -->
-		<div class="row"> <div class="col-sm-12 stats-title"> -The ratio of alcohol related accidents- </div></div>
-		<div class="row stats-row">
-			<div class="col-sm-8 ">
-			<div class='tableauPlaceholder' id='viz1603814007740' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Th&#47;Theratioofalcoholrelatedaccidents&#47;alcohol&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Theratioofalcoholrelatedaccidents&#47;alcohol' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Th&#47;Theratioofalcoholrelatedaccidents&#47;alcohol&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-GB' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1603814007740');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='800px';vizElement.style.height='527px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='800px';vizElement.style.height='527px';} else { vizElement.style.width='100%';vizElement.style.height='727px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
-			</div>
+		<!-- Tableau Bicycle Crashes Melbourne-->
 
-			<div class="col-sm-4 my-auto"><div class="stats-text">
-				<br>The chart shows the ratio relation between bicycle and motor vehicle accidents within all the last 5 years alcohol related accidents. <br><br>
+			<div class="container-fluid">
+			    <div class="row">
+			        <div class="col-sm-4 sub-title"> 2. Accident Report </div>
+			        <div class="col-sm-8"></div>
+			    </div>
 
-				From the chart we can see that the ratio of alcohol related accidents in bicycle accidents is 0.4%, which is much lower than motor vehicle accidents' <font size="5" color="#e6e6e6" >3.7%</font>. <br><br>
+			    <div class="row"> 
+			        <div class="col-sm-12 stats-title"> -Bicycle Crashes Melbourne- 
+			        </div>
+			    </div>
 
-				The chart indicates that it is less possible that the bicycle accidents are related to alcohol. The government can pay less attention to drunk bicycle driving. <br><br> </div>
-			</div>
+			    <div class="row stats-row">
+			        <div class="col-sm-12">
+			            <div class="tableauPlaceholder" id="viz1603980754400" style="position: relative; display: block; justify-content: center; width: 100%; height: 576px; overflow: hidden;">
+			            	<noscript>
+			            		<a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Bi&#47;BicycleCrashesMelbourne&#47;Dashboard4&#47;1_rss.png' style='border: none'></a>
+			            	</noscript>
+			            	<script src="https://public.tableau.com/javascripts/api/viz_v1.js">
+			            	</script>
+			            	<iframe frameborder="0" marginheight="0" marginwidth="0" title="数据可视化" allowtransparency="true" allowfullscreen="true" class="tableauViz" style="display: block; width: 100%; height: 576px; margin: 0px; padding: 0px; border: none;" src="https://public.tableau.com/views/BicycleCrashesMelbourne/Dashboard4?:embed=y&amp;:showVizHome=no&amp;:host_url=https%3A%2F%2Fpublic.tableau.com%2F&amp;:embed_code_version=3&amp;:tabs=no&amp;:toolbar=yes&amp;:animate_transition=yes&amp;:display_static_image=no&amp;:display_spinner=no&amp;:display_overlay=yes&amp;:display_count=yes&amp;:language=en-GB&amp;:loadOrderID=0">	
+			            	</iframe>
+			            </div>                
+			            <script type="text/javascript">
+							var divElement = document.getElementById('viz1603980754400');                    var vizElement = divElement.getElementsByTagName('object')[0]; 
+							if ( divElement.offsetWidth > 800) { vizElement.style.width='100%';vizElement.style.height='45vw';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='100%';vizElement.style.height='45vw'} else { vizElement.style.width='100%';vizElement.style.height='45vw'; var scriptElement = document.createElement('script'); scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);               
+						</script>
+			        </div>
+			    </div>
+			        
+			    <div class="row">
+			        <div class="col-sm-1"></div>
+			        <div class="col-sm-10">
+			            <div class="stats-text" style="margin: 3vw 0vw">
+			                <br>This tableau visualisation shows the bicycle accident sites from 2010 to 2018. <br><br>
+			                From this chart users can explore the locations of bicycle accidents in Melbourne using filters such as the severity of the accident and the speed zone in which the accident occured in. <br><br>
+			                Using this tool we have concluded that: <br>
+			                1-Most bicycle accidents are not of a fatal severity. <br>
+			                2-Majority of bicycle accidents occur in the 40-60km/h speed bracket. <br>
+			                3-Bicycle accidents are more frequent in metropolitan Melbourne as compared to the rest of Victoria. This comes as no suprise as from the HeatMap of bicycle usage in the Map section of this website we can observe that bicycle usage is higher in metropolitan Melbourne. <br><br>
+			            </div>
+		        	</div>
+			        <div class="col-sm-1"></div>
+			    </div>
+			</div>  
+
+		    <div class="stats-mask" style="height: 85vh;">
+			    <!-- Tableau Vehicle accidents per day of the week -->
+			    <div class="row"> <div class="col-sm-12 stats-title"> When does crash usually happen? </div></div>
+			    	<div class="row stats-row">
+				        <div class="col-sm-7 tableu-centre">
+				            <iframe frameborder="0" marginheight="0" marginwidth="0" allowtransparency="true" class="tableauViz" style="display: block; width: 50vw; height: 60vh; margin: 0px; padding: 0px; border: none;" width="100%" height="100%" src="https://public.tableau.com/views/Vehicleaccidentsperdayoftheweek/Week?:language=en-GB&amp;:display_count=y&amp;:origin=viz_share_link?:embed=y&amp;:showVizHome=no&amp;:hoswidtt_url=https%3A%2F%2Fpublic.tableau.com%2F&amp;:tabs=no&amp;:toolbar=no&amp;:animate_transition=yes&amp;:display_static_image=no&amp;:display_spinner=no&amp;:display_overlay=yes&amp;:display_count=yes">
+				            </iframe>
+				        </div>
+
+				        <div class="col-sm-5"><div class="stats-text" style="width: 90%">
+			                <br>This tableau visualisation displays the accident numbers over the last 5 years per day of the week categorised as bicycle accidents or motor vehicle accidents. <br><br>
+
+			                We observe that following the same trend as motor vehicle accidents, bicycle accidents are more frequent on weekdays. <br><br> 
+			            </div>
+		            </div>
+		    	</div>
+		    </div>
+
+			<div class="stats-mask" style="height: 200vh">
+			    <div class="row divider"></div>
+				    <div class="row">
+				        <div class="col-sm-4 sub-title"> 3. Benefits </div>
+				        <div class="col-sm-8"></div>
+				    </div>
+					<div class="row"> <div class="col-sm-12 stats-title"> -Cycling &amp; Health- </div></div>
+					<div class="row">
+			            <div class="col-sm-7">
+			                <div class="row">
+			                    <div class="col-sm-12 stats-minititle"> How bad situation we are facing? 
+			                    </div>
+			                </div>
+
+			                <div class="row">
+			                    <div class="col-sm-12 tableu-centre">
+			                        <iframe frameborder="0" marginheight="0" marginwidth="0" allowtransparency="true" class="tableauViz" style="display: block; width: 50vw; height: 50vh; margin: 0px; padding: 0px; border: none;" width="100%" height="100%" src="https://public.tableau.com/views/PercentageofoverweightpopulationinVictoria/Dashboard2?:language=en-GB&amp;:embed_code_version=3&amp;:loadOrderID=2&amp;:display_count=y&amp;:origin=viz_share_link?:embed=y&amp;:showVizHome=no&amp;:hoswidtt_url=https%3A%2F%2Fpublic.tableau.com%2F&amp;:tabs=no&amp;:toolbar=no&amp;:animate_transition=yes&amp;:display_static_image=no&amp;:display_spinner=no&amp;:display_overlay=yes&amp;:display_count=yes"></iframe>
+			                    </div>
+			                </div>
+
+			                <div class="row">
+			                    <div class="col-sm-12 stats-minititle"> -Percentage of population with insufficient physical activity in Victoria- 
+			                    </div>
+			                </div>
+
+			                <div class="row">
+			                    <div class="col-sm-12 tableu-centre">
+			                        <iframe frameborder="0" marginheight="0" marginwidth="0" allowtransparency="true" class="tableauViz" style="display: block; width: 50vw; height: 50vh; margin: 0px; padding: 0px; border: none;" width="100%" height="100%" src="https://public.tableau.com/views/PercentageofpopulationwithinsufficientphysicalactivityinVictoria/PercentageofpopulationwithinsufficientphysicalactivityinVictoriaDB?:language=en-GB&amp;:retry=yes&amp;:embed_code_version=3&amp;:loadOrderID=3&amp;:display_count=y&amp;publish=yes&amp;:origin=viz_share_link?:embed=y&amp;:showVizHome=no&amp;:hoswidtt_url=https%3A%2F%2Fpublic.tableau.com%2F&amp;:tabs=no&amp;:toolbar=no&amp;:animate_transition=yes&amp;:display_static_image=no&amp;:display_spinner=no&amp;:display_overlay=yes&amp;:display_count=yes"></iframe>
+			                    </div>
+			                </div>
+			            </div>
+
+			            <div class="col-sm-5 mx-auto my-auto" style="padding-right: 20px ">
+			                <div class="row">
+			                    <div class="col-sm-12 stats-minititle"> -Calories per kg consumed while exercising for an hour- </div>
+			                </div>
+
+			                <div class="row">
+			                    <div class="col-sm-12 tableau-centre" style=" padding: 0;">
+			                        <iframe frameborder="0" marginheight="0" marginwidth="0" allowtransparency="true" class="tableauViz" style="display: block; width: 36vw; height: 50vh; margin: 0px; padding: 0px; border: none;" width="100%" height="100%" src="https://public.tableau.com/views/Caloriesperkgconsumedwhileexercisingforanhour/Sheet1?:language=en-GB&amp;:embed_code_version=3&amp;:loadOrderID=4&amp;:display_count=y&amp;:origin=viz_share_link?:embed=y&amp;:showVizHome=no&amp;:hoswidtt_url=https%3A%2F%2Fpublic.tableau.com%2F&amp;:tabs=no&amp;:toolbar=no&amp;:animate_transition=yes&amp;:display_static_image=no&amp;:display_spinner=no&amp;:display_overlay=yes&amp;:display_count=yes"></iframe>
+			                    </div>
+			                </div>
+
+			                <div class="row" style="width: 90%">
+			                    <div class="col-sm-12" style=" padding: 5vw 0;">
+			                        <div class="stats-text mx-auto my-auto" style="width: 100%; margin: 0"> 
+			                        <br>Being physically healthy is a concern in Victoria. From the two maps we can see that on an average more than 40% of the population is overweight and on an average around 35% of the population is not sufficiently physically active. <br><br>
+
+			                        From the bar chart comparing the calories burnt per kg while exercising for an hour we can see that cycling burns high calories as compared to other sports. <br><br>
+			                        
+			                        Consider the small cycling proportions for work and weekday trops, we’d like to suggest facilities to promote the usage of cycling in Victoria to benefit the overall population health. This would provide not only a health benefit to the individual but also an environmental one. <br><br>
+			                    	</div>
+			                    </div>
+			                </div>
+			            </div>
+			        </div>
+			    </div>
+			    
+
+
+		    <div class="stats-mask" style="height: 100vh">
+		    <!-- Tableau The number of bicycle shops -->
+		    	<div class="row"><div class="col-sm-12 stats-title"> How bicycle benefits our economy? </div></div>
+		        <div class="row stats-row mx-auto">
+			        <div class="col-sm-8 mx-auto" style=" display: flex; justify-content: center;">
+			            <iframe frameborder="0" marginheight="0" marginwidth="0" allowtransparency="true" class="tableauViz" style="display: block; width: 50vw; height: 64vh; margin: 0px; padding: 0px; border: none;" width="100%" height="100%" src="https://public.tableau.com/shared/W55FQ9K65?:display_count=y&amp;:origin=viz_share_link?:embed=y&amp;:showVizHome=no&amp;:hoswidtt_url=https%3A%2F%2Fpublic.tableau.com%2F&amp;:tabs=no&amp;:toolbar=yes&amp;:animate_transition=yes&amp;:display_static_image=no&amp;:display_spinner=no&amp;:display_overlay=yes&amp;:display_count=yes"></iframe>
+			        </div>
+			                    
+
+				    <div class="col-sm-4 my-auto" style="padding-left: 0"> 
+				        <div class="stats-text mx-auto" style="width: 90%"> 
+				            <br>From the bar chart we can observe a rising trend in the number of bicycle related businesses over the past years in the city of Melbourne. <br><br>
+
+				            There is a significant increase in the number of bicycle businesses in 2010. This may be due to the initiation of the now infamous Melbourne Bike Share scheme by the government in the same year which may have encouraged the usage of bicycles by the public. <br><br>
+				        </div>
+				    </div>
+			    </div>
+		    </div>
 		</div>
-		</div>
-
-
-
-	<div class="stats-mask">
-	<!-- Tableau Vehicle accidents per day of the week -->
-	<div class="row"> <div class="col-sm-12 stats-title"> -Vehicle accidents per day of the week- </div></div>
-	<div class="row stats-row">
-		<div class="col-sm-8">
-			<div class='tableauPlaceholder' id='viz1603822496557' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ve&#47;Vehicleaccidentsperdayoftheweek&#47;Week&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Vehicleaccidentsperdayoftheweek&#47;Week' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ve&#47;Vehicleaccidentsperdayoftheweek&#47;Week&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-GB' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1603822496557');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='800px';vizElement.style.height='527px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='800px';vizElement.style.height='527px';} else { vizElement.style.width='100%';vizElement.style.height='727px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
-
-		</div>
-
-		<div class="col-sm-4 my-auto"><div class="stats-text">
-				<br>This chart shows the accident numbers over the last 5 years in different days of the week, it also shows the difference between bicycle accidents and motor vehicle accidents. <br><br>
-
-				From the chart we can see that the pattern differs in bicycle accidents and motor vehicle accidents. The peak of bicycle accidents occurs on Wendesday while the peak of motor vehicle accidents occurs on Friday. <br><br>
-
-				The chart indicates that on Wednesday, bicycle accidents are more often than other days of week. The authorities can pay more attention to Wednesday to ensure traffic safety related to bicycle use. <br><br> </div>
-			</div>
-	</div>
-	</div>
-
-
-	<div class="stats-mask">
-	<!-- Tableau Speed zone of bicycle accidents -->
-	<div class="row"> <div class="col-sm-12 stats-title"> -Speed zones of bicycle accidents in Melbourne- </div></div>
-		<div class="row stats-row">
-		<div class="col-sm-8">
-			<div class='tableauPlaceholder' id='viz1603825137356' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Sp&#47;Speedzonesofbicycleaccidents&#47;Speedzone&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Speedzonesofbicycleaccidents&#47;Speedzone' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Sp&#47;Speedzonesofbicycleaccidents&#47;Speedzone&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-GB' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1603825137356');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='800px';vizElement.style.height='527px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='800px';vizElement.style.height='527px';} else { vizElement.style.width='100%';vizElement.style.height='727px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
-		</div>				
-
-	<div class="col-sm-4 my-auto"> <div class="stats-text"> <br> This chart shows the ratio of different speed zones where bicycle accidents happen. <br><br>
-
-	From the chart we can see that bicycle accidents mainly happen between 40-60 km/h. Moreover, higher the speed zone, greater the possibility of a bicycle accident.<br><br>
-
-	The chart indicates that the majority of the bicycle accidents happen at 40-60km/h. Considering the 60km/h speed zone has the most bicycle accidents and the most fatalities, the government should put more warning signs at 60km/h speed zone areas. <br><br>
-	</div>
-	</div>
-	</div>
-	</div>
-
-
-<div class="stats-mask">
-<div class="row"> <div class="col-sm-12 stats-title"> -Cycling & Health- </div></div>
-<div class="row">
-			<div class="col-sm-8">
-				<div class="row">
-					<div class="col-sm-12 stats-minititle"> -Percentage of overweight population in Victoria- </div>
-				</div>
-				<div class="row">
-					<div class="col-sm-12">
-						<div class='tableauPlaceholder' id='viz1603814985495' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Pe&#47;PercentageofoverweightpopulationinVictoria&#47;Dashboard2&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='PercentageofoverweightpopulationinVictoria&#47;Dashboard2' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Pe&#47;PercentageofoverweightpopulationinVictoria&#47;Dashboard2&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-GB' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1603814985495');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='800px';vizElement.style.height='527px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='800px';vizElement.style.height='527px';} else { vizElement.style.width='100%';vizElement.style.height='727px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-sm-12 stats-minititle"> -Percentage of population with insufficient physical activity in Victoria- </div>
-				</div>
-				<div class="row">
-					<div class="col-sm-12">
-						<div class='tableauPlaceholder' id='viz1603815328745' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Pe&#47;PercentageofpopulationwithinsufficientphysicalactivityinVictoria&#47;PercentageofpopulationwithinsufficientphysicalactivityinVictoriaDB&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='PercentageofpopulationwithinsufficientphysicalactivityinVictoria&#47;PercentageofpopulationwithinsufficientphysicalactivityinVictoriaDB' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Pe&#47;PercentageofpopulationwithinsufficientphysicalactivityinVictoria&#47;PercentageofpopulationwithinsufficientphysicalactivityinVictoriaDB&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-GB' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1603815328745');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='800px';vizElement.style.height='527px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='800px';vizElement.style.height='527px';} else { vizElement.style.width='100%';vizElement.style.height='727px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
-					 </div>
-				</div>
-			</div>
-
-			<div class="col-sm-4" style="padding-right: 20px">
-				<div class="row">
-					<div class="col-sm-12 stats-minititle"> -Calories per kg consumed while exercising for an hour- </div>
-				</div>
-				<div class="row">
-					<div class="col-sm-12" style="height: 30vw; padding: 0;">
-						<div class='tableauPlaceholder' id='viz1603818928109' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ca&#47;Caloriesperkgconsumedwhileexercisingforanhour&#47;Sheet1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Caloriesperkgconsumedwhileexercisingforanhour&#47;Sheet1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ca&#47;Caloriesperkgconsumedwhileexercisingforanhour&#47;Sheet1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-GB' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1603818928109');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height='100%';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
-					</div>
-
-				</div>
-				<div class="row" style="margin-top: 14.5vw">
-					<div class="col-sm-12 my-auto"> 
-						<div class="stats-text"> 
-							<br>Being physically healthy is a concern in Victoria. From the two maps describing the percentage of overweight population in Victoria and the percentage of population with insufficient physical activity we can see that on an average more than 40% of the population is overweight and on an average around 35% of the population are not sufficiently physically active. <br><br>
-
-							From the bar chart comparing the calories burnt per kg while exercising for an hour we can see that cycling is a great form of exercise and burns quite a lot of calories as compared to other sports. <br><br>
-							
-							From this data we’d like to suggest facilities to promote the usage of cycling in Victoria to benefit the overall population health. Perhaps a scheme to target those who dwell close to their workplace and can cycle to work. This would provide not only a health benefit to the individual but also an environmental one. <br><br>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	
-	<div class="stats-mask">
-	<!-- Tableau Air Quality -->
-	<div class="row"> <div class="col-sm-12 stats-title"> -Victoria Air Quality Analysis- </div></div>
-		<div class="row stats-row">
-		<div class="col-sm-8">
-			<div class='tableauPlaceholder' id='viz1603826568227' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Vi&#47;VictoriaAirQualityAnalysis&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='VictoriaAirQualityAnalysis&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Vi&#47;VictoriaAirQualityAnalysis&#47;Dashboard1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-GB' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1603826568227');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='800px';vizElement.style.height='527px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='800px';vizElement.style.height='527px';} else { vizElement.style.width='100%';vizElement.style.height='727px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
-		</div>
-					
-
-	<div class="col-sm-4 my-auto"> 
-		<div class="stats-text">
-			<br>PM2.5 are very small particles found suspended in the air, usually in smoke. They have a particle diameter of 2.5 micrometers or less, hence PM2.5. <br><br>
-
-			They are harmful as these particles are small enough to enter the lungs or bloodstream by breathing them in. Prolonged exposure to PM2.5 particles can cause adverse health effects such as respiratory illnesses. It is a leading cause for premature death worldwide. <br><br>
-			
-			Vehicular emissions are a major source of PM2.5 (www.greenvehicleguide.gov.au). As we can see from the air quality analysis chart, there is room for improvement in PM2.5 emissions in Victoria. We suggest government schemes to encourage users to commute via bicycles as a green alternative to improve the PM2.5 emissions in Victoria. <br><br>
-		</div>
-	</div>
-	</div>
-	</div>
-
-
-	<div class="stats-mask">
-	<!-- Tableau The number of bicycle shops -->
-	<div class="row"> <div class="col-sm-12 stats-title"> -Bicycle related Businesses Trends in Melbourne- </div></div>
-		<div class="row stats-row">
-		<div class="col-sm-8">
-			<div class='tableauPlaceholder' id='viz1603823741746' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;RC&#47;RC49F9MKP&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='path' value='shared&#47;RC49F9MKP' /> <param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;RC&#47;RC49F9MKP&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-GB' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1603823741746');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='800px';vizElement.style.height='627px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='800px';vizElement.style.height='627px';} else { vizElement.style.width='100%';vizElement.style.height='727px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
-		</div>
-					
-
-	<div class="col-sm-4 my-auto"> 
-		<div class="stats-text"> 
-			<br>From the bar chart we can observe a rising trend in the number of bicycle related businesses over the past years in the city of Melbourne. <br><br>
-
-There is a significant increase in the number of bicycle businesses in 2010. This may be due to the initiation of the now infamous Melbourne Bike Share scheme by the government in the same year which may have encouraged the usage of bicycles by the public. <br><br>
-
-The last few years have had a stabilized number of bicycle businesses, approximately 20-15 businesses. We conclude that this means that the users that have a requirement to enjoy bicycle purchasing, rental and repair services have stabilized. <br><br>
-		</div>
-	</div>
-	</div>
-	</div>
-
-
 	</div>
 </div>
 
